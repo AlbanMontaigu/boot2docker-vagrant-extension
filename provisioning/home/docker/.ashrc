@@ -1,0 +1,11 @@
+
+
+# =====================================================
+# You can customize docker user profile here
+# =====================================================
+
+# Loads custom alias
+source .alias
+
+# Custom env variables
+export COMPOSE_PROJECT_NAME="app"
