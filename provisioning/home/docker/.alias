@@ -47,6 +47,7 @@ alias dc-prefix="dc_prefix"
 dk_devbox(){
     docker run -it --rm -v \
                         /vagrant:/vagrant -v /var/run/docker.sock:/var/run/docker.sock \
+                        -w="/vagrant" \
                         -e COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:-app} \
                         amontaigu/docker-devbox:1.10.0
 }
