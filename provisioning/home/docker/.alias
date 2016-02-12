@@ -26,6 +26,7 @@ dk_proxy_env(){
     prx_env=$prx_env" -e "$(env | grep no_proxy)
     echo "${prx_env}"
 }
+alias dk-proxy-env="dk_proxy_env"
 
 # Change compose app prefix
 dc_prefix(){
