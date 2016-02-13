@@ -7,7 +7,7 @@
 # ------------------------------------------------------------
 # Custom env variables
 # ------------------------------------------------------------
-export DOCKER_DEVBOX_VERSION="1.10.1"
+export DOCKER_TOOLBOX_VERSION="1.10.1"
 
 
 # ------------------------------------------------------------
@@ -26,16 +26,18 @@ alias dk-proxy-env="dk_proxy_env"
 
 
 # ------------------------------------------------------------
-# Docker dk-devbox command
+# Docker dk-toolbox command
 # ------------------------------------------------------------
-dk_devbox(){
+dk_toolbox(){
     docker run -it --rm -v \
                 /vagrant:/vagrant -v /var/run/docker.sock:/var/run/docker.sock \
                 -w="/vagrant" \
                 -e COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:-app} \
-                amontaigu/docker-devbox:$DOCKER_DEVBOX_VERSION
+                amontaigu/docker-toolbox:$DOCKER_TOOLBOX_VERSION
 }
-alias dk-devbox="dk_devbox"
+alias dk-toolbox="dk_toolbox"
+alias dktb="dk_toolbox"
 
 # For box update
-alias dk-devbox-update="docker pull amontaigu/docker-devbox:$DOCKER_DEVBOX_VERSION"
+alias dk-toolbox-update="docker pull amontaigu/docker-toolbox:$DOCKER_TOOLBOX_VERSION"
+alias dktb-update="dk-toolbox-update"
