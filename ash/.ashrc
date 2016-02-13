@@ -1,11 +1,13 @@
 
 
-# =====================================================
-# You can customize docker user profile here
-# =====================================================
+# ------------------------------------------------------------
+# Import custom configurations in a dynamic way
+#
+# NOTE: prefix the files with a number to manage order
+# ------------------------------------------------------------
+for ashrc_file in $BOOT2DOCKER_CONFIG_DIR/ash/.ashrc.d/* ; do
+    if [ -f $ashrc_file ]; then 
+        source $ashrc_file
+    fi
+done
 
-# Loads custom alias
-source .alias
-
-# Custom env variables
-export COMPOSE_PROJECT_NAME="app"

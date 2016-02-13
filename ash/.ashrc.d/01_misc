@@ -1,57 +1,20 @@
-#!/bin/sh
+
+# ============================================================
+# Misc custom commands
+# ============================================================
 
 
-# --------------------------------------
-# Global helper aliases
-# --------------------------------------
+# ------------------------------------------------------------
+# Global helper commands
+# ------------------------------------------------------------
 alias ls='ls --color=tty'
 alias ll='ls -al'
 
+
+# ------------------------------------------------------------
 # Fix cache issue in boot2docker with vb guest additions
 # @see https://forums.virtualbox.org/viewtopic.php?f=3&t=33201
 # @see https://www.virtualbox.org/ticket/12597
 # @see https://www.virtualbox.org/ticket/9069
+# ------------------------------------------------------------
 alias b2d-sync='sudo -i sh -c "sync && echo 3 > /proc/sys/vm/drop_caches && exit"'
-
-
-# --------------------------------------
-# Docker helper aliases
-# --------------------------------------
-
-# Get all proxy env var in a docker cmd line friendly format
-dk_proxy_env(){
-    prx_env="-e "$(env | grep HTTP_PROXY)
-    prx_env=$prx_env" -e "$(env | grep http_proxy)
-    prx_env=$prx_env" -e "$(env | grep NO_PROXY)
-    prx_env=$prx_env" -e "$(env | grep no_proxy)
-    echo "${prx_env}"
-}
-alias dk-proxy-env="dk_proxy_env"
-
-# Change compose app prefix
-dc_prefix(){
-
-    if [ $# -eq 0 ]; then
-        echo $COMPOSE_PROJECT_NAME
-    else
-        export COMPOSE_PROJECT_NAME=$1
-    fi
-}
-alias dc-prefix="dc_prefix"
-
-
-# --------------------------------------
-# Docker dk-devbox aliases and commands
-# --------------------------------------
-
-# Main docker devbox command
-dk_devbox(){
-    docker run -it --rm -v \
-                /vagrant:/vagrant -v /var/run/docker.sock:/var/run/docker.sock \
-                -w="/vagrant" \
-                -e COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:-app} \
-                amontaigu/docker-devbox:1.10.1
-}
-
-# More convenient
-alias dk-devbox="dk_devbox"
