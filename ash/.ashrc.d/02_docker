@@ -5,12 +5,6 @@
 
 
 # ------------------------------------------------------------
-# Custom env variables
-# ------------------------------------------------------------
-export DOCKER_TOOLBOX_VERSION="1.10.1"
-
-
-# ------------------------------------------------------------
 # Docker helper commands
 # ------------------------------------------------------------
 
@@ -29,10 +23,11 @@ alias dk-proxy-env="dk_proxy_env"
 # Docker dk-toolbox command
 # ------------------------------------------------------------
 dk_toolbox(){
-    docker run -it --rm -v \
-                /vagrant:/vagrant -v /var/run/docker.sock:/var/run/docker.sock \
+    docker run -it --rm  \
+                -v /var/run/docker.sock:/var/run/docker.sock \
+                -v /vagrant:/vagrant \
                 -w="/vagrant" \
-                -e COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:-app} \
+                -e COMPOSE_PROJECT_NAME=$COMPOSE_PROJECT_NAME \
                 amontaigu/docker-toolbox:$DOCKER_TOOLBOX_VERSION
 }
 alias dk-toolbox="dk_toolbox"

@@ -5,6 +5,8 @@
 # -------------------------------------------------------------------
 export BOOT2DOCKER_CONFIG_DIR="/var/lib/boot2docker/config"
 export HOME_DOCKER_USER="/home/docker"
+export DOCKER_TOOLBOX_VERSION="1.10.1"
+export COMPOSE_PROJECT_NAME="app"
 
 
 # ------------------------------------------------------------
