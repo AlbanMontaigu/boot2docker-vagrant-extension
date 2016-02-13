@@ -7,6 +7,15 @@
 # -------------------------------------------------------------------
 # ADD complements in .ashrc for docker user
 # -------------------------------------------------------------------
+
+# Backup original .ashrc and restores it when needed
 echo "== Adding complements to $HOME_DOCKER_USER/.ashrc !"
+if [ -f $HOME_DOCKER_USER/.ashrc.original ] ; then
+    cp -f $HOME_DOCKER_USER/.ashrc.original $HOME_DOCKER_USER/.ashrc
+else
+    cp -f $HOME_DOCKER_USER/.ashrc  $HOME_DOCKER_USER/.ashrc.original 
+fi
+
+# Customize .ashrc
 cat $BOOT2DOCKER_CONFIG_DIR/ash/.ashrc >> $HOME_DOCKER_USER/.ashrc
 echo "== Complements added to $HOME_DOCKER_USER/.ashrc !"
