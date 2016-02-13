@@ -36,3 +36,6 @@ dk_devbox(){
                 amontaigu/docker-devbox:$DOCKER_DEVBOX_VERSION
 }
 alias dk-devbox="dk_devbox"
+
+# For box update
+alias dk-devbox-update="docker pull amontaigu/docker-devbox:$DOCKER_DEVBOX_VERSION"
