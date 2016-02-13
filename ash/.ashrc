@@ -1,5 +1,12 @@
 
 
+# -------------------------------------------------------------------
+# Parametrization (for all environment)
+# -------------------------------------------------------------------
+export BOOT2DOCKER_CONFIG_DIR="/var/lib/boot2docker/config"
+export HOME_DOCKER_USER="/home/docker"
+
+
 # ------------------------------------------------------------
 # Import custom configurations in a dynamic way
 #
