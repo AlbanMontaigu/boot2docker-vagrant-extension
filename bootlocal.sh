@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# ===================================================================
+# Bootlocal script executed during each vagrant up
+# ===================================================================
+
+
 # -------------------------------------------------------------------
 # Parametrization (for all environment)
 # -------------------------------------------------------------------
@@ -8,8 +13,12 @@ export HOME_DOCKER_USER="/home/docker"
 
 
 # -------------------------------------------------------------------
-# ADD complements in .ashrc for docker user
+# Import custom configurations in a dynamic way
+#
+# NOTE: prefix the files with a number to manage order
 # -------------------------------------------------------------------
-echo "== Adding complements to $HOME_DOCKER_USER/.ashrc !"
-cat $BOOT2DOCKER_CONFIG_DIR/ash/.ashrc >> $HOME_DOCKER_USER/.ashrc
-echo "== Complements added to $HOME_DOCKER_USER/.ashrc !"
+for bootlocal_file in $BOOT2DOCKER_CONFIG_DIR/bootlocal.sh.d/* ; do
+    if [ -f $bootlocal_file ]; then 
+        source $bootlocal_file
+    fi
+done

@@ -1,0 +1,12 @@
+
+# ===================================================================
+# Ash custom configuration
+# ===================================================================
+
+
+# -------------------------------------------------------------------
+# ADD complements in .ashrc for docker user
+# -------------------------------------------------------------------
+echo "== Adding complements to $HOME_DOCKER_USER/.ashrc !"
+cat $BOOT2DOCKER_CONFIG_DIR/ash/.ashrc >> $HOME_DOCKER_USER/.ashrc
+echo "== Complements added to $HOME_DOCKER_USER/.ashrc !"
