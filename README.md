@@ -15,6 +15,7 @@ All with appropriate versions :).
 ## Main (custom) docker commands
 
 - ```dk-devbox``` runs and go into your [docker devbox](https://github.com/AlbanMontaigu/docker-devbox)
+- ```dk-devbox-update``` to update the devbox
 - ```dk-proxy-env``` to get all proxy param in a docker parameter way for your containers
 - ```dc-prefix``` changes the docker compose prefix
 
