@@ -1,5 +1,5 @@
 
-## 1.10.1 (2016-02-12)
+## 1.10.1 (2016-02-15)
 - Update to boot2docker 1.10.1
 - Documentation update / fix
 - Now ```dk-proxy-env``` is available
