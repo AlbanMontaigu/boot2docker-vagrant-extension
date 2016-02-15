@@ -7,8 +7,9 @@
 # ---------------------------------------------------------------------------
 BOOT2DOCKER_CONFIG_DIR="/var/lib/boot2docker/config"
 BOOT2DOCKER_PROXY_DIR="$BOOT2DOCKER_CONFIG_DIR/proxy"
-DK_REDSOCKS_PROXY_IP="1.2.3.4"
-DK_REDSOCKS_PROXY_PORT="3128"
+DK_REDSOCKS_PROXY_IP="$(b2d_proxy_host)"
+DK_REDSOCKS_PROXY_PORT="$(b2d_proxy_port)"
+
 
 # ---------------------------------------------------------------------------
 # Redsocks container to avoid proxy definition for containers
