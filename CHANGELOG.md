@@ -10,6 +10,7 @@
 - ```dktb-update``` command added
 - ```b2d_proxy_host``` and ```b2d_proxy_port``` commands added
 - Now redsocks will read directly proxy from b2d env
+- New ```b2d-dk-redsocks``` command to manage docker redsocks proxy
 
 ## 1.10.0 (2016-02-07)
 - Initial version for docker 1.10.0 and compose 1.6.0
