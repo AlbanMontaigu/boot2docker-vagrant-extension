@@ -1,0 +1,56 @@
+
+# ============================================================
+# Boot2docker custom commands
+# ============================================================
+
+
+# ------------------------------------------------------------
+# Fix cache issue in boot2docker with vb guest additions
+# @see https://forums.virtualbox.org/viewtopic.php?f=3&t=33201
+# @see https://www.virtualbox.org/ticket/12597
+# @see https://www.virtualbox.org/ticket/9069
+# ------------------------------------------------------------
+alias b2d-sync='sudo -i sh -c "sync && echo 3 > /proc/sys/vm/drop_caches && exit"'
+
+
+# ------------------------------------------------------------
+# Proxy helper commands
+# ------------------------------------------------------------
+
+# Extract host from boot2docker http_proxy env var
+b2d_proxy_host(){
+  echo "$http_proxy" | sed 's|^.\+://\(.\+\):[0-9]\+$|\1|g'
+}
+alias b2d-proxy-host="b2d_proxy_host"
+
+# Extract port from boot2docker http_proxy env var
+b2d_proxy_port(){
+  echo "$http_proxy" | sed 's|^.\+://.\+:\([0-9]\+\)$|\1|g'
+}
+alias b2d-proxy-port="b2d_proxy_port"
+
+# Cmd to manage dk-redsocks container
+b2d_dk_redsocks(){
+    B2D_DK_REDSOCKS_SCRIPT="$BOOT2DOCKER_CONFIG_DIR/dk-redsocks/dk-resocks.sh"
+    case "$1" in
+        start) $B2D_DK_REDSOCKS_SCRIPT start
+            ;;
+        stop) $B2D_DK_REDSOCKS_SCRIPT stop
+            ;;
+        restart) $B2D_DK_REDSOCKS_SCRIPT stop
+            $B2D_DK_REDSOCKS_SCRIPT start
+            ;;
+        "") b2d_dk_redsocks_help
+            ;;
+        *) b2d_dk_redsocks_help
+            ;;
+    esac
+}
+alias b2d-dk-redsocks="b2d_dk_redsocks"
+
+# Integrated help for dk-redsocks cmd
+b2d_dk_redsocks_help(){
+    echo "Usage b2d-dk-resocks start/stop"
+    echo
+    echo "Start or stop redsocks in a container to act as a transparent proxy for your containers"
+}
