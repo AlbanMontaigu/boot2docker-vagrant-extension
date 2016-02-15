@@ -18,3 +18,20 @@ alias ll='ls -al'
 # @see https://www.virtualbox.org/ticket/9069
 # ------------------------------------------------------------
 alias b2d-sync='sudo -i sh -c "sync && echo 3 > /proc/sys/vm/drop_caches && exit"'
+
+
+# ------------------------------------------------------------
+# Proxy helper commands
+# ------------------------------------------------------------
+
+# Extract host from boot2docker http_proxy env var
+b2d_proxy_host(){
+  echo "$http_proxy" | sed 's|^.\+://\(.\+\):[0-9]\+$|\1|g'
+}
+alias b2d-proxy-host="b2d_proxy_host"
+
+# Extract port from boot2docker http_proxy env var
+b2d_proxy_port(){
+  echo "$http_proxy" | sed 's|^.\+://.\+:\([0-9]\+\)$|\1|g'
+}
+alias b2d-proxy-port="b2d_proxy_port"
