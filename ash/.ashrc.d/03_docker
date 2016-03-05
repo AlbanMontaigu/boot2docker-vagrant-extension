@@ -62,6 +62,7 @@ dk_custom_usage(){
     echo
     echo "Custom dk commands:"
     echo "    toolbox   Start a container from amontaigu/docker-toolbox image and go into it"
+    echo "    tb        See toolbox subcommand"
     echo "    proxy     Get all proxy env var in a docker cmd line friendly format"
 }
 
