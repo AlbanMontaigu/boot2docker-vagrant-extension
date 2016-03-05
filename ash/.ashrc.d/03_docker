@@ -9,30 +9,98 @@
 # ------------------------------------------------------------
 
 # Get all proxy env var in a docker cmd line friendly format
-dk_proxy_env(){
+dk_proxy(){
     prx_env="-e "$(env | grep HTTP_PROXY)
     prx_env=$prx_env" -e "$(env | grep http_proxy)
     prx_env=$prx_env" -e "$(env | grep NO_PROXY)
     prx_env=$prx_env" -e "$(env | grep no_proxy)
     echo "${prx_env}"
 }
-alias dk-proxy-env="dk_proxy_env"
+
+dk_proxy_help(){
+    echo "Usage: dk proxy"
+    echo ""
+    echo "Get all proxy env var in a docker cmd line friendly format."
+}
 
 
 # ------------------------------------------------------------
 # Docker dk-toolbox command
 # ------------------------------------------------------------
 dk_toolbox(){
-    docker run -it --rm  \
+
+    # Update case
+    if [[ "$1" == "update" ]]; then
+        sx docker pull amontaigu/docker-toolbox:$DOCKER_TOOLBOX_VERSION
+        return
+    fi
+
+    # Default command
+    sx docker run -it --rm  \
                 -v /var/run/docker.sock:/var/run/docker.sock \
                 -v /vagrant:/vagrant \
                 -w="/vagrant" \
                 -e COMPOSE_PROJECT_NAME=$COMPOSE_PROJECT_NAME \
                 amontaigu/docker-toolbox:$DOCKER_TOOLBOX_VERSION
 }
-alias dk-toolbox="dk_toolbox"
-alias dktb="dk_toolbox"
 
-# For box update
-alias dk-toolbox-update="docker pull amontaigu/docker-toolbox:$DOCKER_TOOLBOX_VERSION"
-alias dktb-update="dk-toolbox-update"
+dk_toolbox_help(){
+    echo "Usage: dk toolbox [update]"
+    echo ""
+    echo "Start a container from amontaigu/docker-toolbox image and go into it."
+}
+
+
+# ------------------------------------------------------------
+# Show docker usage + information about custom commands
+# ------------------------------------------------------------
+dk_custom_usage(){
+    echo
+    echo "dk = docker alias with enhancements."
+    echo
+    docker | sed 's/docker/dk/g'
+    echo
+    echo "Custom dk commands:"
+    echo "    toolbox   Start a container from amontaigu/docker-toolbox image and go into it"
+    echo "    proxy     Get all proxy env var in a docker cmd line friendly format"
+}
+
+
+# ------------------------------------------------------------
+# Help complements
+# ------------------------------------------------------------
+dk_help(){
+    case "$1" in
+        toolbox) dk_toolbox_help
+            ;;
+        proxy) dk_proxy_help
+            ;;
+        "--help") docker
+            ;;
+        "") docker
+            ;;
+        *) docker "$@" --help
+            ;;
+    esac
+}
+
+
+# ------------------------------------------------------------
+# Docker command plus new features for it
+# ------------------------------------------------------------
+dk(){
+    if [[ "${@: -1}" == "--help" ]] ; then
+        dk_help "$1"
+        return 0
+    fi
+    case "$1" in
+        toolbox) dk_toolbox "$2"
+            ;;
+        proxy) dk_proxy
+            ;;
+        "") dk_custom_usage
+            ;;
+        *) sx docker "$@"
+            ;;
+    esac
+}
