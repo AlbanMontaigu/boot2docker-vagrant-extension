@@ -49,7 +49,7 @@ b2d_syncd_start(){
         b2d_syncd_process &
     fi
 }
-b2d_syncd_start & # Default: start it!
+b2d_syncd_start # Default: start it!
 
 b2d_syncd_stop(){
     export BOOT2DOCKER_SYNCD="OFF"
