@@ -169,7 +169,7 @@ b2d(){
     case "$1" in
         sync) b2d_sync
             ;;
-        syncd) b2d_syncd
+        syncd) b2d_syncd "$2"
             ;;
         dk) b2d_dk "$2" "$3"
             ;;
