@@ -10,7 +10,15 @@
 # @see https://www.virtualbox.org/ticket/12597
 # @see https://www.virtualbox.org/ticket/9069
 # ------------------------------------------------------------
-alias b2d-sync='sudo -i sh -c "sync && echo 3 > /proc/sys/vm/drop_caches && exit"'
+b2d_sync(){
+    sudo -i sh -c "sync && echo 3 > /proc/sys/vm/drop_caches && exit"
+}
+
+b2d_sync_help(){
+    echo "Usage: b2d sync"
+    echo
+    echo "In case of virtualbox guest additions sync bug, force synchronization beetween host and boot2docker"
+}
 
 
 # ------------------------------------------------------------
@@ -21,13 +29,33 @@ alias b2d-sync='sudo -i sh -c "sync && echo 3 > /proc/sys/vm/drop_caches && exit
 b2d_proxy_host(){
   echo "$http_proxy" | sed 's|^.\+://\(.\+\):[0-9]\+$|\1|g'
 }
-alias b2d-proxy-host="b2d_proxy_host"
 
 # Extract port from boot2docker http_proxy env var
 b2d_proxy_port(){
   echo "$http_proxy" | sed 's|^.\+://.\+:\([0-9]\+\)$|\1|g'
 }
-alias b2d-proxy-port="b2d_proxy_port"
+
+b2d_proxy(){
+    case "$1" in
+        host) b2d_proxy_host
+            ;;
+        port) 2d_proxy_port
+            ;;
+        *) b2d_proxy_help
+            ;;
+    esac
+}
+
+b2d_proxy_help(){
+    echo "Usage: b2d proxy host/port"
+    echo
+    echo "Show current boot2docker proxy host/port"
+}
+
+
+# ------------------------------------------------------------
+# Transparent proxy for the containers with redsocks
+# ------------------------------------------------------------
 
 # Cmd to manage dk-redsocks container
 b2d_dk_redsocks(){
@@ -46,11 +74,81 @@ b2d_dk_redsocks(){
             ;;
     esac
 }
-alias b2d-dk-redsocks="b2d_dk_redsocks"
 
 # Integrated help for dk-redsocks cmd
 b2d_dk_redsocks_help(){
-    echo "Usage b2d-dk-resocks start/stop"
+    echo "Usage: b2d dk resocks start/stop"
     echo
     echo "Start or stop redsocks in a container to act as a transparent proxy for your containers"
+}
+
+
+# ------------------------------------------------------------
+# Boot2docker dk subcommand
+# ------------------------------------------------------------
+b2d_dk(){
+    case "$1" in
+        redsocks) b2d_dk_redsocks "$2"
+            ;;
+        *) b2d_dk_custom_usage
+            ;;
+    esac
+}
+
+b2d_dk_custom_usage(){
+    echo
+    echo "b2d dk = commands to manage your docker daemon in your boot2docker environment."
+    echo
+    echo "b2d dk commands:"
+    echo "    redsocks  Start or stop redsocks in a container to act as a transparent proxy for your containers"
+}
+
+
+# ------------------------------------------------------------
+# Show boot2docker usage + information about custom commands
+# ------------------------------------------------------------
+b2d_custom_usage(){
+    echo
+    echo "b2d = commands to manage your boot2docker environment."
+    echo
+    echo "b2d commands:"
+    echo "    sync      In case of virtualbox guest additions sync bug, force synchronization beetween host and boot2docker"
+}
+
+
+# ------------------------------------------------------------
+# Help complements
+# ------------------------------------------------------------
+b2d_help(){
+    case "$1" in
+        sync) b2d_sync_help
+            ;;
+        dk) b2d_dk_custom_usage
+            ;;
+        "") b2d_custom_usage
+            ;;
+        *) b2d_custom_usage
+            ;;
+    esac
+}
+
+
+# ------------------------------------------------------------
+# Docker command plus new features for it
+# ------------------------------------------------------------
+b2d(){
+    if [[ "${@: -1}" == "--help" ]] ; then
+        b2d_help "$1"
+        return 0
+    fi
+    case "$1" in
+        sync) b2d_sync
+            ;;
+        dk) b2d_dk "${@:2}"
+            ;;
+        "") b2d_custom_usage
+            ;;
+        *) b2d_custom_usage
+            ;;
+    esac
 }
