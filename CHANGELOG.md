@@ -1,6 +1,9 @@
 
 ## 1.10.2 (2016-03-04)
 - Update to boot2docker 1.10.2
+- Now all ```b2d``` commands are like this ```b2d sub_command````
+- Now all ```dc``` commands are like this ```dc sub_command````
+- Now all ```dk``` commands are like this ```dk sub_command````
 
 ## 1.10.1 (2016-02-15)
 - Update to boot2docker 1.10.1
