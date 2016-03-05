@@ -22,6 +22,35 @@ b2d_sync_help(){
 
 
 # ------------------------------------------------------------
+# Sync daemon
+# ------------------------------------------------------------
+b2d_syncd(){
+    case "$1" in
+        start) export BOOT2DOCKER_SYNCD="ON"
+            b2d_syncd_process &
+            ;;
+        stop) export BOOT2DOCKER_SYNCD="OFF"
+            ;;
+        *) echo "BOOT2DOCKER_SYNCD=$BOOT2DOCKER_SYNCD"
+            ;;
+    esac
+}
+
+b2d_syncd_process(){
+    while [[ "$BOOT2DOCKER_SYNCD" == "ON" ]]
+    do
+        sleep 2
+        b2d sync > /dev/null 2>&1
+    done
+}
+
+b2d_syncd_help(){
+    echo "Usage: b2d syncd start/stop"
+    echo
+    echo "Starts or stop a small b2d sync daemon that sync every 2 seconds."
+}
+
+# ------------------------------------------------------------
 # Proxy helper commands
 # ------------------------------------------------------------
 
@@ -67,8 +96,6 @@ b2d_dk_redsocks(){
             ;;
         restart) $B2D_DK_REDSOCKS_SCRIPT stop
             $B2D_DK_REDSOCKS_SCRIPT start
-            ;;
-        "") b2d_dk_redsocks_help
             ;;
         *) b2d_dk_redsocks_help
             ;;
@@ -125,9 +152,9 @@ b2d_help(){
     case "$1" in
         sync) b2d_sync_help
             ;;
-        dk) b2d_dk_custom_usage
+        syncd) b2d_syncd_help
             ;;
-        "") b2d_custom_usage
+        dk) b2d_dk_custom_usage
             ;;
         *) b2d_custom_usage
             ;;
@@ -142,11 +169,11 @@ b2d(){
     case "$1" in
         sync) b2d_sync
             ;;
+        syncd) b2d_syncd
+            ;;
         dk) b2d_dk "$2" "$3"
             ;;
         help) b2d_help "$2"
-            ;;
-        "") b2d_custom_usage
             ;;
         *) b2d_custom_usage
             ;;
