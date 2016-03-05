@@ -3,10 +3,14 @@
 # Misc custom commands
 # ============================================================
 
+# To show and execute commands in a didactic mode
+show_exec() {
+    echo "[CMD] $@"
+    eval "$@"
+}
+alias sx="show_exec"
 
-# ------------------------------------------------------------
-# Global helper commands
-# ------------------------------------------------------------
+# Show dir facility
 alias ls='ls -p --color=tty'
 alias ll='ls -al'
 
