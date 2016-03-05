@@ -44,7 +44,7 @@ b2d_syncd_process(){
 }
 
 b2d_syncd_start(){
-    if [[ "$BOOT2DOCKER_SYNCD" == "OFF" ]]; then
+    if [[ "$BOOT2DOCKER_SYNCD" != "ON" ]]; then
         export BOOT2DOCKER_SYNCD="ON"
         b2d_syncd_process &
     fi
