@@ -4,7 +4,6 @@
 # Parametrization (for all environment)
 # -------------------------------------------------------------------
 export BOOT2DOCKER_CONFIG_DIR="/var/lib/boot2docker/config"
-export BOOT2DOCKER_SYNCD="ON"
 export HOME_DOCKER_USER="/home/docker"
 export DOCKER_TOOLBOX_VERSION="1.10.2"
 export COMPOSE_PROJECT_NAME="app"

@@ -35,17 +35,6 @@ b2d_syncd(){
     esac
 }
 
-b2d_syncd_start(){
-    if [[ "$BOOT2DOCKER_SYNCD" == "OFF" ]]; then
-        export BOOT2DOCKER_SYNCD="ON"
-        b2d_syncd_process &
-    fi
-}
-
-b2d_syncd_stop(){
-    export BOOT2DOCKER_SYNCD="OFF"
-}
-
 b2d_syncd_process(){
     while [[ "$BOOT2DOCKER_SYNCD" == "ON" ]]
     do
@@ -53,7 +42,18 @@ b2d_syncd_process(){
         b2d sync > /dev/null 2>&1
     done
 }
-b2d_syncd_process & # Default : autostart
+
+b2d_syncd_start(){
+    if [[ "$BOOT2DOCKER_SYNCD" == "OFF" ]]; then
+        export BOOT2DOCKER_SYNCD="ON"
+        b2d_syncd_process &
+    fi
+}
+b2d_syncd_start & # Default: start it!
+
+b2d_syncd_stop(){
+    export BOOT2DOCKER_SYNCD="OFF"
+}
 
 b2d_syncd_help(){
     echo "Usage: b2d syncd start/stop"
