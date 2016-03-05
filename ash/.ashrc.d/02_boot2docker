@@ -113,6 +113,8 @@ b2d_custom_usage(){
     echo
     echo "b2d commands:"
     echo "    sync      In case of virtualbox guest additions sync bug, force synchronization beetween host and boot2docker"
+    echo "    dk        Commands to manage your docker daemon in your boot2docker environment"
+    echo "    help      Give help including a subcommand"
 }
 
 
@@ -137,14 +139,12 @@ b2d_help(){
 # Docker command plus new features for it
 # ------------------------------------------------------------
 b2d(){
-    if [[ "${@: -1}" == "--help" ]] ; then
-        b2d_help "$1"
-        return 0
-    fi
     case "$1" in
         sync) b2d_sync
             ;;
-        dk) b2d_dk "${@:2}"
+        dk) b2d_dk "$2" "$3"
+            ;;
+        help) b2d_help "$2"
             ;;
         "") b2d_custom_usage
             ;;
