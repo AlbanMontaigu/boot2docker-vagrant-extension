@@ -45,7 +45,7 @@ dk_toolbox(){
 }
 
 dk_toolbox_help(){
-    echo "Usage: dk toolbox [update]"
+    echo "Usage: dk toolbox/tb [update]"
     echo ""
     echo "Start a container from amontaigu/docker-toolbox image and go into it."
 }
@@ -73,6 +73,8 @@ dk_help(){
     case "$1" in
         toolbox) dk_toolbox_help
             ;;
+        tb) dk_toolbox_help
+            ;;
         proxy) dk_proxy_help
             ;;
         "--help") docker
@@ -95,6 +97,8 @@ dk(){
     fi
     case "$1" in
         toolbox) dk_toolbox "$2"
+            ;;
+        tb) dk_toolbox "$2"
             ;;
         proxy) dk_proxy
             ;;
