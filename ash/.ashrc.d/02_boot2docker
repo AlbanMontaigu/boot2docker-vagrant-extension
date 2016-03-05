@@ -26,14 +26,24 @@ b2d_sync_help(){
 # ------------------------------------------------------------
 b2d_syncd(){
     case "$1" in
-        start) export BOOT2DOCKER_SYNCD="ON"
-            b2d_syncd_process &
+        start) b2d_syncd_start
             ;;
-        stop) export BOOT2DOCKER_SYNCD="OFF"
+        stop) b2d_syncd_stop
             ;;
         *) echo "BOOT2DOCKER_SYNCD=$BOOT2DOCKER_SYNCD"
             ;;
     esac
+}
+
+b2d_syncd_start(){
+    if [[ "$BOOT2DOCKER_SYNCD" == "OFF" ]]; then
+        export BOOT2DOCKER_SYNCD="ON"
+        b2d_syncd_process &
+    fi
+}
+
+b2d_syncd_stop(){
+    export BOOT2DOCKER_SYNCD="OFF"
 }
 
 b2d_syncd_process(){
