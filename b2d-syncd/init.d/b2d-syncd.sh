@@ -5,8 +5,8 @@
 # ============================================================
 
 # Configuration
-DAEMON_DIR="/var/lib/boot2docker/config/b2d_syncd"
-DAEMON_BIN="$DAEMON_DIR/bin/b2d_syncd.sh"
+DAEMON_DIR="/var/lib/boot2docker/config/b2d-syncd"
+DAEMON_BIN="$DAEMON_DIR/bin/b2d-syncd.sh"
 DAEMON_USER="root"
 DAEMON_NAME="b2d-syncd"
 DAEMON_PID_FILE="/var/run/b2d-sync.pid"
