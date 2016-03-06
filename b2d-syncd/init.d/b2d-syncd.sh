@@ -34,7 +34,7 @@ b2d_syncd_check() {
 
 # Show daemon status
 b2d_syncd_status() {
-    if check; then
+    if b2d_syncd_check; then
         echo "$DAEMON_NAME daemon is running"
         exit 0
     else
