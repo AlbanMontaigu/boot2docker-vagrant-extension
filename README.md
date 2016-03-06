@@ -1,8 +1,8 @@
-# boot2docker-vagrant-config
+# boot2docker-vagrant-extension
 
 ## Introduction
 
-Standard configuration files proposal for a vagrant boot2docker environment.
+Standard extension files proposal for a vagrant boot2docker environment.
 
 It should run with [vagrant-boot2docker-box](https://github.com/AlbanMontaigu/boot2docker-vagrant-box) and a project with [vagrant-boot2docker-template](https://github.com/AlbanMontaigu/boot2docker-vagrant-template) included.
 
