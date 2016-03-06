@@ -11,8 +11,7 @@
 # @see https://www.virtualbox.org/ticket/9069
 # ------------------------------------------------------------
 b2d_sync(){
-    sync 
-    echo 3 > /proc/sys/vm/drop_caches
+    sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"
 }
 
 b2d_sync_help(){
@@ -27,7 +26,7 @@ b2d_sync_help(){
 # ------------------------------------------------------------
 
 b2d_syncd(){
-    $BOOT2DOCKER_CONFIG_DIR/b2d-syncd/init.d/b2d-syncd.sh "$1"
+    sudo $BOOT2DOCKER_CONFIG_DIR/b2d-syncd/init.d/b2d-syncd.sh "$1"
 }
 
 b2d_syncd_help(){
@@ -154,7 +153,7 @@ b2d_help(){
 # ------------------------------------------------------------
 b2d(){
     case "$1" in
-        sync) sudo b2d_sync
+        sync) b2d_sync
             ;;
         syncd) b2d_syncd "$2"
             ;;
