@@ -6,6 +6,7 @@
 - Now all ```dk``` commands are like this ```dk sub_command````
 - ```b2d syncd``` command added
 - Daemon b2d-syncd added
+- Better ```b2d sync``` command
 
 ## 1.10.1 (2016-02-15)
 - Update to boot2docker 1.10.1
