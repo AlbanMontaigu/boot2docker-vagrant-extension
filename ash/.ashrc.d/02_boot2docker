@@ -11,7 +11,8 @@
 # @see https://www.virtualbox.org/ticket/9069
 # ------------------------------------------------------------
 b2d_sync(){
-    sudo -i sh -c "sync && echo 3 > /proc/sys/vm/drop_caches && exit"
+    sync 
+    echo 3 > /proc/sys/vm/drop_caches
 }
 
 b2d_sync_help(){
@@ -153,7 +154,7 @@ b2d_help(){
 # ------------------------------------------------------------
 b2d(){
     case "$1" in
-        sync) b2d_sync
+        sync) sudo b2d_sync
             ;;
         syncd) b2d_syncd "$2"
             ;;
