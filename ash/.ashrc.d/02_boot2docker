@@ -25,6 +25,20 @@ b2d_sync_help(){
 # Proxy helper commands
 # ------------------------------------------------------------
 
+b2d_syncd(){
+    $BOOT2DOCKER_CONFIG_DIR/b2d-syncd/init.d/b2d-syncd.sh "$1"
+}
+
+b2d_syncd_help(){
+    echo "Usage: b2d syncd start/stop/status"
+    echo
+    echo "Similar to b2d sync but in a daemon way that lunches regulary the command"
+}
+
+# ------------------------------------------------------------
+# Proxy helper commands
+# ------------------------------------------------------------
+
 # Extract host from boot2docker http_proxy env var
 b2d_proxy_host(){
   echo "$http_proxy" | sed 's|^.\+://\(.\+\):[0-9]\+$|\1|g'
@@ -111,6 +125,7 @@ b2d_custom_usage(){
     echo
     echo "b2d commands:"
     echo "    sync      In case of virtualbox guest additions sync bug, force synchronization beetween host and boot2docker"
+    echo "    syncd     Similar to b2d sync but in a daemon way that lunches regulary the command"
     echo "    dk        Commands to manage your docker daemon in your boot2docker environment"
     echo "    help      Give help including a subcommand"
 }
@@ -122,6 +137,8 @@ b2d_custom_usage(){
 b2d_help(){
     case "$1" in
         sync) b2d_sync_help
+            ;;
+        syncd) b2d_syncd_help
             ;;
         dk) b2d_dk_custom_usage
             ;;
@@ -137,6 +154,8 @@ b2d_help(){
 b2d(){
     case "$1" in
         sync) b2d_sync
+            ;;
+        syncd) b2d_syncd "$2"
             ;;
         dk) b2d_dk "$2" "$3"
             ;;
