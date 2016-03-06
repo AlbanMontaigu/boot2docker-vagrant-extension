@@ -52,9 +52,9 @@ b2d_syncd_usage(){
 
 # Sub commands management
 case "$1" in
-    start) sudo b2d_syncd_start
+    start) b2d_syncd_start
         ;;
-    stop) sudo b2d_syncd_stop
+    stop) b2d_syncd_stop
         ;;
     status) b2d_syncd_status
         ;;
