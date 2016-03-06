@@ -5,8 +5,8 @@
 #
 # NOTE : Change the configuration 1.2.3.4 3128 to your correct proxy
 # ---------------------------------------------------------------------------
-BOOT2DOCKER_CONFIG_DIR="/var/lib/boot2docker/config"
-BOOT2DOCKER_PROXY_DIR="$BOOT2DOCKER_CONFIG_DIR/proxy"
+BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
+BOOT2DOCKER_PROXY_DIR="$BOOT2DOCKER_EXTENSION_DIR/proxy"
 DK_REDSOCKS_PROXY_IP="$(b2d_proxy_host)"
 DK_REDSOCKS_PROXY_PORT="$(b2d_proxy_port)"
 

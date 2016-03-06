@@ -8,15 +8,15 @@
 # -------------------------------------------------------------------
 # Parametrization (for all environment)
 # -------------------------------------------------------------------
-export BOOT2DOCKER_CONFIG_DIR="/var/lib/boot2docker/config"
+export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
 
 
 # -------------------------------------------------------------------
-# Import custom configurations in a dynamic way
+# Import custom elements in a dynamic way
 #
 # NOTE: prefix the files with a number to manage order
 # -------------------------------------------------------------------
-for provision_file in $BOOT2DOCKER_CONFIG_DIR/provision.sh.d/* ; do
+for provision_file in $BOOT2DOCKER_EXTENSION_DIR/provision.sh.d/* ; do
     if [ -f $provision_file ]; then 
         source $provision_file
     fi

@@ -3,20 +3,19 @@
 # -------------------------------------------------------------------
 # Parametrization (for all environment)
 # -------------------------------------------------------------------
-export BOOT2DOCKER_CONFIG_DIR="/var/lib/boot2docker/config"
+export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
 export HOME_DOCKER_USER="/home/docker"
 export DOCKER_TOOLBOX_VERSION="1.10.2"
 export COMPOSE_PROJECT_NAME="app"
 
 
 # ------------------------------------------------------------
-# Import custom configurations in a dynamic way
+# Import custom elements in a dynamic way
 #
 # NOTE: prefix the files with a number to manage order
 # ------------------------------------------------------------
-for ashrc_file in $BOOT2DOCKER_CONFIG_DIR/ash/.ashrc.d/* ; do
+for ashrc_file in $BOOT2DOCKER_EXTENSION_DIR/ash/.ashrc.d/* ; do
     if [ -f $ashrc_file ]; then 
         source $ashrc_file
     fi
 done
-
