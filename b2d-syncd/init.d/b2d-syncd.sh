@@ -14,22 +14,31 @@ DAEMON_PID_FILE="/var/run/b2d-sync.pid"
 # Test binary existence
 test -x $DAEMON_BIN || exit 1
 
+# Checks daemon
+b2d_syncd_check() {
+    [ -f $DAEMON_PID_FILE ] && ps -A -o pid | grep "^\s*$(cat $DAEMON_PID_FILE)$" > /dev/null 2>&1
+}
+
 # Daemon start
 b2d_syncd_start () {
-    echo "Starting system $DAEMON_NAME daemon"
-    $DAEMON_BIN &
-    echo "$!" > $DAEMON_PID_FILE
+    if b2d_syncd_check; then
+        echo "$DAEMON_NAME is already running!"
+    else
+        echo "Starting system $DAEMON_NAME daemon..."
+        $DAEMON_BIN &
+        echo "$!" > $DAEMON_PID_FILE
+    fi
 }
 
 # Daemon stop
 b2d_syncd_stop () {
-    echo "Stopping system $DAEMON_NAME daemon"
-    kill $(cat $DAEMON_PID_FILE)
-}
-
-# Checks daemon
-b2d_syncd_check() {
-    [ -f $DAEMON_PID_FILE ] && ps -A -o pid | grep "^\s*$(cat $DAEMON_PID_FILE)$" > /dev/null 2>&1
+    if b2d_syncd_check; then
+        echo "Stopping system $DAEMON_NAME daemon.."
+        kill $(cat $DAEMON_PID_FILE)
+        rm -f $DAEMON_PID_FILE
+    else
+        echo "$DAEMON_NAME is already stopped!"
+    fi
 }
 
 # Show daemon status
