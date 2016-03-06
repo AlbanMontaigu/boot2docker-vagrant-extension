@@ -4,6 +4,7 @@
 - Now all ```b2d``` commands are like this ```b2d sub_command````
 - Now all ```dc``` commands are like this ```dc sub_command````
 - Now all ```dk``` commands are like this ```dk sub_command````
+- ```b2d syncd``` command added
 - Daemon b2d-syncd added
 
 ## 1.10.1 (2016-02-15)
