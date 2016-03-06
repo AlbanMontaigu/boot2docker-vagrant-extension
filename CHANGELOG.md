@@ -1,5 +1,5 @@
 
-## 1.10.2 (2016-03-04)
+## 1.10.2 (2016-03-06)
 - Update to boot2docker 1.10.2
 - Now all ```b2d``` commands are like this ```b2d sub_command````
 - Now all ```dc``` commands are like this ```dc sub_command````
@@ -7,6 +7,7 @@
 - ```b2d syncd``` command added
 - Daemon b2d-syncd added
 - Better ```b2d sync``` command
+- Renamed to ```vagrant-boot2docker-extension```
 
 ## 1.10.1 (2016-02-15)
 - Update to boot2docker 1.10.1
