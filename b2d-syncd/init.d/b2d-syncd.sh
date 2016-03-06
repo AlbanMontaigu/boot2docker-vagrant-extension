@@ -33,7 +33,7 @@ b2d_syncd_start () {
 # Daemon stop
 b2d_syncd_stop () {
     if b2d_syncd_check; then
-        echo "Stopping system $DAEMON_NAME daemon.."
+        echo "Stopping system $DAEMON_NAME daemon..."
         kill $(cat $DAEMON_PID_FILE)
         rm -f $DAEMON_PID_FILE
     else
