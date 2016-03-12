@@ -3,6 +3,7 @@
 - Update to boot2docker 1.10.3
 - Update to my docker-toolbox 1.10.3
 - My docker-toolbox extension OFF by default
+- ```dk tb extension [on/off]```command added
 
 ## 1.10.2 (2016-03-06)
 - Update to boot2docker 1.10.2
