@@ -41,6 +41,9 @@ dk_toolbox(){
                 -v /vagrant:/vagrant \
                 -w="/vagrant" \
                 -e COMPOSE_PROJECT_NAME=$COMPOSE_PROJECT_NAME \
+                -e DKTB_EXTENSION_REPO="https://github.com/AlbanMontaigu/docker-toolbox-extension.git" \
+                -e DKTB_EXTENSION_VERSION="master" \
+                --name docker-toolbox \
                 amontaigu/docker-toolbox:$DOCKER_TOOLBOX_VERSION
 }
 
