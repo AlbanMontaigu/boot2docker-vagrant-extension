@@ -3,9 +3,19 @@
 # -------------------------------------------------------------------
 # Parametrization (for all environment)
 # -------------------------------------------------------------------
+
+# Misc
+export VAGRANT_B2D_EXTENSION_VERSION="1.10.3"
 export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
 export HOME_DOCKER_USER="/home/docker"
-export DOCKER_TOOLBOX_VERSION="1.10.3"
+
+# Docker toolbox
+export DKTB_VERSION=VAGRANT_B2D_EXTENSION_VERSION
+export DKTB_EXTENSION_STATUS="OFF"
+export DKTB_EXTENSION_REPO="https://github.com/AlbanMontaigu/docker-toolbox-extension.git"
+export DKTB_EXTENSION_VERSION=DKTB_VERSION
+
+# Compose
 export COMPOSE_PROJECT_NAME="app"
 
 
