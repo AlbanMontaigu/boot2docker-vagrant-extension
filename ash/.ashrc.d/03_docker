@@ -35,6 +35,12 @@ dk_toolbox(){
         return
     fi
 
+    # Extension management
+    if [[ "$1" == "extension" ]]; then
+        dk_toolbox_extension "$2"
+        return
+    fi
+
     # Default command
     if [[ "$DKTB_EXTENSION_STATUS" == "ON" ]]; then
         sx docker run -it --rm  \
@@ -57,8 +63,20 @@ dk_toolbox(){
     fi
 }
 
+# Extension management for toolbox
+dk_toolbox_extension(){
+    case "$1" in
+        on) export DKTB_EXTENSION_STATUS="ON"
+            ;;
+        off) export DKTB_EXTENSION_STATUS="OFF"
+            ;;
+        *) echo "DKTB_EXTENSION_STATUS=$DKTB_EXTENSION_STATUS"
+            ;;
+    esac
+}
+
 dk_toolbox_help(){
-    echo "Usage: dk toolbox/tb [update]"
+    echo "Usage: dk toolbox/tb [update/extension] [if extension change: on/off]"
     echo ""
     echo "Start a container from amontaigu/docker-toolbox image and go into it."
 }
