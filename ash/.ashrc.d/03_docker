@@ -47,7 +47,7 @@ dk_toolbox(){
                     -v /var/run/docker.sock:/var/run/docker.sock \
                     -v /vagrant:/vagrant \
                     -w="/vagrant" \
-                    -e COMPOSE_PROJECT_NAME=$COMPOSE_PROJECT_NAME \
+                    -e COMPOSE_PROJECT_NAME="$COMPOSE_PROJECT_NAME" \
                     -e DKTB_EXTENSION_REPO="$DKTB_EXTENSION_REPO" \
                     -e DKTB_EXTENSION_VERSION="$DKTB_EXTENSION_VERSION" \
                     --name docker-toolbox \
