@@ -5,7 +5,7 @@
 # -------------------------------------------------------------------
 export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
 export HOME_DOCKER_USER="/home/docker"
-export DOCKER_TOOLBOX_VERSION="1.10.2-r2"
+export DOCKER_TOOLBOX_VERSION="1.10.3"
 export COMPOSE_PROJECT_NAME="app"
 
 
