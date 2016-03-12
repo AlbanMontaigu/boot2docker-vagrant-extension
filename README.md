@@ -27,6 +27,7 @@ You have differnts ways to achieve that sync, see [vagrant documentation](https:
 
 - ```dk toolbox``` or ```dk tb``` runs and go into your [docker-toolbox](https://github.com/AlbanMontaigu/docker-toolbox)
 - ```dk toolbox update``` to update the toolbox
+- ```dk toolbox extension [on/off]``` to activate/desactivate/show *docker-toolbox-extension*
 - ```dk proxy``` to get all proxy param in a docker parameter way for your containers
 - ```dc prefix``` changes the docker compose prefix
 
