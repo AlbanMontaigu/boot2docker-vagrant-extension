@@ -16,6 +16,10 @@ export BOOT2DOCKER_EXTENSION_PARAM_DIR="$BOOT2DOCKER_EXTENSION_DIR/param.d"
 # -------------------------------------------------------------------
 # Change param values if possible
 # -------------------------------------------------------------------
-if [ -f "$BOOT2DOCKER_EXTENSION_PARAM_DIR/$1" ]; then
-    echo "$2" > "$1"
+BOOT2DOCKER_EXTENSION_PARAM_FILE="$BOOT2DOCKER_EXTENSION_PARAM_DIR/$1"
+if [ -f $BOOT2DOCKER_EXTENSION_PARAM_FILE ]; then
+    echo "$2" > $BOOT2DOCKER_EXTENSION_PARAM_FILE
+    echo "[INFO] $BOOT2DOCKER_EXTENSION_PARAM_FILE updated with value=$2"
+else
+    echo "[WARN] $BOOT2DOCKER_EXTENSION_PARAM_FILE not found so not updated"
 fi
