@@ -1,6 +1,15 @@
 
 
 # ------------------------------------------------------------
+# General param (no need to be persistent with param.d)
+# ------------------------------------------------------------
+export BOOT2DOCKER_EXTENSION_VERSION="1.10.3"
+export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
+export BOOT2DOCKER_EXTENSION_PARAM_DIR="$BOOT2DOCKER_EXTENSION_DIR/param"
+export HOME_DOCKER_USER="/home/docker"
+
+
+# ------------------------------------------------------------
 # Import custom elements in a dynamic way
 #
 # NOTE: prefix the files with a number to manage order

@@ -1,13 +1,8 @@
 
 # ============================================================
-# Param generated for the environment
+# Param generated for the environment and modifiable with
+# param.sh system.
 # ============================================================
-
-# Misc (no need to be persistent in a file)
-export BOOT2DOCKER_EXTENSION_VERSION="1.10.3"
-export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
-export BOOT2DOCKER_EXTENSION_PARAM_DIR="$BOOT2DOCKER_EXTENSION_DIR/param"
-export HOME_DOCKER_USER="/home/docker"
 
 # Docker toolbox (persistent to modify with vagrant file mechanism if requested)
 export DKTB_VERSION=$(cat "$BOOT2DOCKER_EXTENSION_PARAM_DIR/DKTB_VERSION")
