@@ -1,9 +1,10 @@
 
-## 1.10.3 (2016-03-12)
+## 1.10.3 (2016-03-13)
 - Update to boot2docker 1.10.3
 - Update to my docker-toolbox 1.10.3
 - My docker-toolbox extension OFF by default
 - ```dk tb extension [on/off]```command added
+- Introducing persistent param change with ```param.sh```
 
 ## 1.10.2 (2016-03-06)
 - Update to boot2docker 1.10.2
