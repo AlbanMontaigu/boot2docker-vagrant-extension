@@ -50,12 +50,39 @@ b2d_proxy_port(){
   echo "$http_proxy" | sed 's|^.\+://.\+:\([0-9]\+\)$|\1|g'
 }
 
+# Change proxy with a specific profile stored in :
+b2_proxy_change(){
+    
+    if [[ "$1" == "" ]]; then
+        echo "[ERROR] Please specify the proxy profile you want to set"
+        return 1
+    fi
+    
+    proxy_profile_file="$BOOT2DOCKER_EXTENSION_DIR/proxy/$1"
+    if [ -f "$proxy_profile_file" ]; then
+        source $proxy_profile_file
+        echo "[INFO] Proxy change done with $1"
+    else
+        echo "[ERROR] Proxy profile file not found for $1"
+    fi
+}
+
+# Restory proxy configuration with initial values comming from /etc/env
+b2d_proxy_restore(){
+    source /etc/environment
+    echo "[INFO] Proxy vars restored to /etc/environment"
+}
+
 # Proxy command switch
 b2d_proxy(){
     case "$1" in
         host) b2d_proxy_host
             ;;
-        port) 2d_proxy_port
+        port) b2d_proxy_port
+            ;;
+        change) b2d_proxy_change "$2"
+            ;;
+        restore) b2d_proxy_restore
             ;;
         *) b2d_proxy_help
             ;;
@@ -64,9 +91,14 @@ b2d_proxy(){
 
 # Proxy command help
 b2d_proxy_help(){
-    echo "Usage: b2d proxy host/port"
     echo
-    echo "Show current boot2docker proxy host/port"
+    echo "b2d proxy = commands helper to manage proxy concerns boot2docker environment."
+    echo
+    echo "b2d proxy commands:"
+    echo "    host      Get host part in http_proxy env variable"
+    echo "    port      Get port part in http_proxy env variable"
+    echo "    change    Changes current proxy env vars with specific profile specified"
+    echo "    restore   Restore proxy env vars with /etc/environment"
 }
 
 
