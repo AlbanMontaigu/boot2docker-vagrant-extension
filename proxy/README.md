@@ -3,7 +3,7 @@
 Your can store here the proxy profile configuration.
 
 - 1 file per profile
-- Each file name corresponds to a profile name you can use with ```b2d proxy change PROFILE_NAME"
+- Each file name corresponds to a profile name you can use with ```b2d proxy change PROFILE_NAME```
 
 A file should be set like an ```/etc/environment``` file :
 
