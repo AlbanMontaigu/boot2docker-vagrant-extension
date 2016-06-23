@@ -51,7 +51,7 @@ b2d_proxy_port(){
 }
 
 # Change proxy with a specific profile stored in :
-b2_proxy_change(){
+b2d_proxy_change(){
     
     if [[ "$1" == "" ]]; then
         echo "[ERROR] Please specify the proxy profile you want to set"
