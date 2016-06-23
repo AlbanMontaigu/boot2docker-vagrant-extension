@@ -163,6 +163,7 @@ b2d_custom_usage(){
     echo "    sync      In case of virtualbox guest additions sync bug, force synchronization beetween host and boot2docker"
     echo "    syncd     Similar to b2d sync but in a daemon way that lunches regulary the command"
     echo "    dk        Commands to manage your docker daemon in your boot2docker environment"
+    echo "    proxy     Helper commands for proxy management"
     echo "    help      Give help including a subcommand"
 }
 
@@ -175,6 +176,8 @@ b2d_help(){
         sync) b2d_sync_help
             ;;
         syncd) b2d_syncd_help
+            ;;
+        proxy) b2d_proxy_help
             ;;
         dk) b2d_dk_custom_usage
             ;;
@@ -194,6 +197,8 @@ b2d(){
         syncd) b2d_syncd "$2"
             ;;
         dk) b2d_dk "$2" "$3"
+            ;;
+        proxy) b2d_proxy "$2" "$3"
             ;;
         help) b2d_help "$2"
             ;;
