@@ -1,5 +1,5 @@
 
-## 1.11.2-2 (2016-06-23)
+## 1.12.0 (2016-07-28)
 - ```dk proxy``` now renamed to dk proxy flags
 - ```dk proxy``` is now for a set of sub commands 
 - new ```dk proxy update``` to update docker proxy with current proxy env vars
