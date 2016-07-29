@@ -5,11 +5,11 @@
 
 
 # ------------------------------------------------------------
-# Docker helper commands
+# Docker proxy helper commands
 # ------------------------------------------------------------
 
-# Get all proxy env var in a docker cmd line friendly format
-dk_proxy(){
+# Get all proxy flags in a docker cmd line friendly format
+dk_proxy_flags(){
     prx_env="-e "$(env | grep HTTP_PROXY)
     prx_env=$prx_env" -e "$(env | grep http_proxy)
     prx_env=$prx_env" -e "$(env | grep NO_PROXY)
@@ -17,10 +17,73 @@ dk_proxy(){
     echo "${prx_env}"
 }
 
-dk_proxy_help(){
-    echo "Usage: dk proxy"
+# Integrated help for proxy flags
+dk_proxy_flags_help(){
+    echo "Usage: dk proxy flags"
     echo ""
-    echo "Get all proxy env var in a docker cmd line friendly format."
+    echo "Get all proxy flags in a docker cmd line friendly format."
+}
+
+# Proxy update for docker daemon with current prx env vars
+dk_proxy_update() {
+    export NEW_HTTP_PROXY=${1}
+
+    # First Docker before all
+    sudo /etc/init.d/docker stop
+    sleep 1
+
+    # Apply http_proxy configuration to all directive for docker engine
+    for DIRECTIVE in http_proxy https_proxy HTTP_PROXY HTTPS_PROXY; do
+        sudo sed -i 's#export '${DIRECTIVE}'=.*$#export '${DIRECTIVE}'='${NEW_HTTP_PROXY}'#g' /var/lib/boot2docker/profile
+    done
+
+    # Start Docker to apply change
+    sudo /etc/init.d/docker start
+    sleep 1
+}
+
+# Integrated help for proxy update
+dk_proxy_update_help(){
+    echo "Usage: dk proxy update"
+    echo ""
+    echo "Update proxy configuration for docker daemon with current environment proxy."
+}
+
+# Direct access for command help
+dk_proxy_help(){
+    case "$1" in
+        flags) dk_proxy_flags_help
+            ;;
+        update) dk_proxy_update_help
+            ;;
+        *) dk_proxy_usage
+            ;;
+    esac
+}
+
+# Command usage
+dk_proxy_usage(){
+    echo
+    echo "dk proxy = commands helper to manage proxy concerns for docker."
+    echo
+    echo "dk proxy commands:"
+    echo "    flags     Get all proxy flags in a docker cmd line friendly format"
+    echo "    update    Update proxy configuration for docker daemon with current environment proxy"
+    echo "    help      Give help including a subcommand"
+}
+
+# Proxy command switch
+dk_proxy(){
+    case "$1" in
+        flags) dk_proxy_flags
+            ;;
+        update) dk_proxy_update
+            ;;
+        help) dk_proxy_help "$2"
+            ;;
+        *) dk_proxy_usage
+            ;;
+    esac
 }
 
 
@@ -94,7 +157,7 @@ dk_custom_usage(){
     echo "Custom dk commands:"
     echo "    toolbox   Start a container from amontaigu/docker-toolbox image and go into it"
     echo "    tb        See toolbox subcommand"
-    echo "    proxy     Get all proxy env var in a docker cmd line friendly format"
+    echo "    proxy     Docker proxy management helper"
 }
 
 
