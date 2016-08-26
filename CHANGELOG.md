@@ -1,5 +1,11 @@
 
+## 1.12.1 (2016-08-26)
+- Update to boot2docker 1.12.1
+- Update to my docker-toolbox 1.12.1
+
 ## 1.12.0 (2016-07-28)
+- Update to boot2docker 1.12.0
+- Update to my docker-toolbox 1.12.0
 - ```dk proxy``` now renamed to dk proxy flags
 - ```dk proxy``` is now for a set of sub commands 
 - new ```dk proxy update``` to update docker proxy with current proxy env vars
