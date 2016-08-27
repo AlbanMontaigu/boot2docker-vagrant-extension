@@ -4,39 +4,40 @@
 
 Standard extension files proposal for a vagrant boot2docker environment.
 
-It should run with [vagrant-boot2docker-box](https://github.com/AlbanMontaigu/boot2docker-vagrant-box) and a project with [vagrant-boot2docker-template](https://github.com/AlbanMontaigu/boot2docker-vagrant-template) included.
+It should run with [vagrant-boot2docker-box](https://github.com/AlbanMontaigu/boot2docker-vagrant-box) and a project with [vagrant-boot2docker-template](https://github.com/AlbanMontaigu/boot2docker-vagrant-template) included all with appropriate versions.
 
-All with appropriate versions :).
+This extension is the heart of environment features and commands but the finest part will comme from **[docker-toolbox](https://github.com/AlbanMontaigu/docker-toolbox)** that you can run with ```dk tb``` command. This will bring you in a custom container with compose and lot of other commands. To exit, just type ```exit```.
 
-## Files synchronization between your host and your boot2docker
+**Important:** please note that all indications below consider that you are in your box run with the [vagrant-boot2docker-template](https://github.com/AlbanMontaigu/boot2docker-vagrant-template).
 
-By default, files are shared between your host and your boot2docker with Virtualbox Guest additions system. 
+## Available commands
 
-You have differnts ways to achieve that sync, see [vagrant documentation](https://www.vagrantup.com/docs/synced-folders/).
+Each command as integrated help, just type the command to see detailed usage.
 
-**Known bug:** for very small modifications on your files on your host, it may not sync with your boot2docker. Since ```1.10.2``` I have added some ```b2d-syncd``` daemon to refresh regularly the files *(every 2 sec)*. This can do some small overload so you can stop it with ```b2d syncd stop``` and do a manual ```b2d sync``` when requested.
+### Box commands
 
-## Custom commands
+**b2d = commands to manage your boot2docker environment.**
 
-### boot2docker commands
+Just type ```b2d``` to see available commands list.
 
-- ```b2d sync``` if your files (especially for very small modifications) doesn't sync very well between your computer and boot2docker try this command
-- ```b2d synd start/stop/status``` management of ```b2d-syncd```daemon *(activated by default)*
+### Custom docker commands
 
-### Custom docker and compose commands
-
-- ```dk toolbox``` or ```dk tb``` runs and go into your [docker-toolbox](https://github.com/AlbanMontaigu/docker-toolbox)
-- ```dk toolbox update``` to update the toolbox
-- ```dk toolbox extension [on/off]``` to activate/desactivate/show *docker-toolbox-extension*
-- ```dk proxy``` to get all proxy param in a docker parameter way for your containers
-- ```dc prefix``` changes the docker compose prefix
+**dk = docker alias with enhancements.**
 
 For all the **docker** commands please refer to the [official documentation](https://docs.docker.com/reference/commandline/cli/).
 
-## Improved enviroment with custom docker-toolbox
+Just type ```dk``` to see available commands list.
 
-To enjoy more commands and features, go in [docker-toolbox](https://github.com/AlbanMontaigu/docker-toolbox) with this command: ```dk tb```.
+### Custom docker compose commands
 
-This will bring you in a custom container with compose and lot of other commands.
+**dc = docker-compose utilities for your boot2docker environment.**
 
-To exit, just type ```exit```.
+Just type ```dc``` to see available commands list.
+
+## Known bugs and built-in workaround
+
+### Files synchronization between your host and the box
+
+By default, files are shared between your host and your box with *Virtualbox Guest additions* system.
+
+For very small modifications on your files on your host, it may not sync with your boot2docker. Since ```1.10.2``` I have added some ```b2d-syncd``` daemon to refresh regularly the files *(every 2 sec)*. This can do some small overload so you can stop it with ```b2d syncd stop``` and do a manual ```b2d sync``` when requested.
