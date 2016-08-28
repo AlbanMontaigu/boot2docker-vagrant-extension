@@ -4,9 +4,9 @@
 
 Standard extension files proposal for a vagrant boot2docker environment.
 
-It should run with [vagrant-boot2docker-box](https://github.com/AlbanMontaigu/boot2docker-vagrant-box) and a project with [vagrant-boot2docker-template](https://github.com/AlbanMontaigu/boot2docker-vagrant-template) included all with appropriate versions.
+**It should run with [vagrant-boot2docker-box](https://github.com/AlbanMontaigu/boot2docker-vagrant-box) and a project with [vagrant-boot2docker-template](https://github.com/AlbanMontaigu/boot2docker-vagrant-template) included all with appropriate versions.**
 
-This extension is the heart of environment features and commands but the finest part will comme from **[docker-toolbox](https://github.com/AlbanMontaigu/docker-toolbox)** that you can run with ```dk tb``` command. This will bring you in a custom container with compose and lot of other commands. To exit, just type ```exit```.
+This extension is the heart of environment features and commands but **the finest part will comme from [docker-toolbox](https://github.com/AlbanMontaigu/docker-toolbox)** that you can run with ```dk tb``` command. This will bring you in a custom container with compose and lot of other commands. To exit, just type ```exit```.
 
 **Important:** please note that all indications below consider that you are in your box run with the [vagrant-boot2docker-template](https://github.com/AlbanMontaigu/boot2docker-vagrant-template).
 
