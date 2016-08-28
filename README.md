@@ -34,6 +34,42 @@ Just type ```dk``` to see available commands list.
 
 Just type ```dc``` to see available commands list.
 
+## Files and folders description
+
+### ash
+
+Here you have all custom commands loaded in your environment by this extension.
+
+### b2d-syncd
+
+Daemon to auto sync small files modifications between the host and the box.
+
+### bootlocal.sh.d
+
+Contains all scripts dynamically run by ```bootlocal.sh```.
+
+### dk-redsocks
+
+Contains daemon files to run a redsocks docker container an allow transparent proxy management for containers.
+
+### param.d
+
+All persistent parameter requested by the extension.
+
+### provision.sh.d
+
+Contains all scripts dynamically run by ```provision.sh```.
+
+### proxy
+
+Contains all your custom proxy definition to load them as a simple profile with built in ```b2d proxy``` commands.
+
+### bootlocal.sh, param.sh, provision.sh
+
+Twin script with same ones in the [boot2docker-vagrant-template](https://github.com/AlbanMontaigu/boot2docker-vagrant-template) project.
+
+Their twin's in the template project will execute them one in the same stage. Read their docs to know what are their goals.
+
 ## Known bugs and built-in workaround
 
 ### Files synchronization between your host and the box
