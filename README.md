@@ -12,7 +12,7 @@ This extension is the heart of environment features and commands but **the fines
 
 ## Available commands
 
-Each command as integrated help, just type the command to see detailed usage.
+Each command has integrated help, just type the command to see detailed usage.
 
 ### Box commands
 
