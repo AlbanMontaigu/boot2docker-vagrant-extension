@@ -1,4 +1,8 @@
 
+## 1.12.1b (2016-08-29)
+- Major doc update
+- Sample proxy file added
+
 ## 1.12.1 (2016-08-26)
 - Update to boot2docker 1.12.1
 - Update to my docker-toolbox 1.12.1
