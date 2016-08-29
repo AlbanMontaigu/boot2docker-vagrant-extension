@@ -2,6 +2,7 @@
 ## 1.12.1b (2016-08-29)
 - Major doc update
 - Sample proxy file added
+- Update to dk tb 1.12.1b
 
 ## 1.12.1 (2016-08-26)
 - Update to boot2docker 1.12.1
