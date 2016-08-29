@@ -1,0 +1,8 @@
+HTTP_PROXY=http://your.url:3128
+HTTPS_PROXY=http://your.url:3128
+FTP_PROXY=
+NO_PROXY=localhost,127.0.0.1,.sock
+http_proxy=http://your.url:3128
+https_proxy=http://your.url:3128
+ftp_proxy=
+no_proxy=localhost,127.0.0.1,.sock
