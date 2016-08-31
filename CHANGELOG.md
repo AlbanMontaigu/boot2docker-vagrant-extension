@@ -1,7 +1,7 @@
 
 ## 1.12.1b (2016-08-31)
-- Update to dk tb 1.12.1c
-- Update to dk tb extension 1.12.1c
+- Update to dk tb 1.12.1d
+- Update to dk tb extension 1.12.1d
 
 ## 1.12.1b (2016-08-29)
 - Major doc update
