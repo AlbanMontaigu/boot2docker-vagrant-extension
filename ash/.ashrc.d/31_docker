@@ -26,15 +26,13 @@ dk_proxy_flags_help(){
 
 # Proxy update for docker daemon with current prx env vars
 dk_proxy_update() {
-    export NEW_HTTP_PROXY=${1}
-
     # First Docker before all
     sudo /etc/init.d/docker stop
     sleep 1
 
     # Apply http_proxy configuration to all directive for docker engine
     for DIRECTIVE in http_proxy https_proxy HTTP_PROXY HTTPS_PROXY; do
-        sudo sed -i 's#export '${DIRECTIVE}'=.*$#export '${DIRECTIVE}'='${NEW_HTTP_PROXY}'#g' /var/lib/boot2docker/profile
+        sudo sed -i 's#export '${DIRECTIVE}'=.*$#export '${DIRECTIVE}'='$( eval echo \$${DIRECTIVE})'#g' /var/lib/boot2docker/profile
     done
 
     # Start Docker to apply change
