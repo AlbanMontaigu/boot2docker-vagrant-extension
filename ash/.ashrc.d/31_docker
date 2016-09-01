@@ -26,6 +26,7 @@ dk_proxy_flags_help(){
 
 # Proxy update for docker daemon with current prx env vars
 dk_proxy_update() {
+    
     # First Docker before all
     sudo /etc/init.d/docker stop
     sleep 1
