@@ -2,6 +2,7 @@
 ## 1.12.1e (2016-09-01)
 - BUGFIX: Now ```dk proxy update``` is working and not displaying help
 - FEATURE: Now ```dk proxy update``` uses env variable (use ```b2d proxy change [PROFILE]``` to change env var)
+- FEATURE: Now ```dk tb``` takes in account current proxy values inside itself
 - Update to dk tb 1.12.1e
 - Update to dk tb extension 1.12.1e
 
