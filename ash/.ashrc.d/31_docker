@@ -196,7 +196,7 @@ dk(){
             ;;
         tb) dk_toolbox "$2"
             ;;
-        proxy) dk_proxy
+        proxy) dk_proxy "$2"
             ;;
         "") dk_custom_usage
             ;;
