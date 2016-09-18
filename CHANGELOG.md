@@ -2,6 +2,7 @@
 ## 1.12.1f (2016-09-19)
 - UPDATE: update to dk tb 1.12.1f
 - UPDATE: update to dk tb extension 1.12.1f
+- UPDATE: now shell scripts have sh extension for better edition
 
 ## 1.12.1e (2016-09-01)
 - BUGFIX: Now ```dk proxy update``` is working and not displaying help
