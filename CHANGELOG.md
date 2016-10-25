@@ -1,4 +1,8 @@
 
+## 1.12.2 (2016-10-25)
+- Update to boot2docker 1.12.2
+- Update to my docker-toolbox 1.12.2
+
 ## 1.12.1f (2016-09-19)
 - UPDATE: update to dk tb 1.12.1f
 - UPDATE: update to dk tb extension 1.12.1f
