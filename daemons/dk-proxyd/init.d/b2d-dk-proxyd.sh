@@ -5,11 +5,11 @@
 # ============================================================
 
 # Configuration
-DAEMON_DIR="/var/lib/boot2docker/extension/b2d-dk-proxyd"
+DAEMON_DIR="/var/lib/boot2docker/extension/dk_proxyd"
 DAEMON_START_BIN="$DAEMON_DIR/bin/start_transparent_proxy.sh"
 DAEMON_STOP_BIN="$DAEMON_DIR/bin/stop_transparent_proxy.sh"
 DAEMON_USER="root"
-DAEMON_NAME="b2d-dk-proxyd"
+DAEMON_NAME="dk_proxyd"
 DAEMON_PID_FILE="/var/run/2d-dk-proxyd.pid"
 
 # Test binary existence

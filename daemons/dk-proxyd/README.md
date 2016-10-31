@@ -1,8 +1,8 @@
-# b2d-dk-proxyd folder
+# dk_proxyd folder
 
 ## Description
 
-b2d-dk-proxyd daemon files. 
+dk_proxyd daemon files. 
 
 This daemon goal is to provide a transparent proxy for your docker containers.
 

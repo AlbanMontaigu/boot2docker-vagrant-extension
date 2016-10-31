@@ -26,7 +26,7 @@ b2d_sync_help(){
 # b2d sync daemon management
 # ------------------------------------------------------------
 b2d_syncd(){
-    sudo $BOOT2DOCKER_EXTENSION_DIR/b2d-syncd/init.d/b2d-syncd.sh "$1"
+    sudo $BOOT2DOCKER_EXTENSION_DIR/daemons/syncd/init.d/b2d-syncd.sh "$1"
 }
 
 # Syncd command help
