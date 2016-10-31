@@ -3,4 +3,5 @@
 # B2D Syncd daemon lunching
 # ===================================================================
 
-$BOOT2DOCKER_EXTENSION_DIR/daemons/syncd/init.d/b2d-syncd.sh start
+echo "== Starting syncd daemon !"
+$BOOT2DOCKER_EXTENSION_DIR/daemons/syncd/init.d/syncd.sh start

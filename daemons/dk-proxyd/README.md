@@ -1,8 +1,8 @@
-# dk_proxyd folder
+# dk-proxyd folder
 
 ## Description
 
-dk_proxyd daemon files. 
+```dk-proxyd``` daemon files. 
 
 This daemon goal is to provide a transparent proxy for your docker containers.
 

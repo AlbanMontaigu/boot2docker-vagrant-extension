@@ -1,42 +1,40 @@
 #!/bin/sh
 
 # ============================================================
-# B2D docker transparent proxy daemon
+# B2D Sync daemon
 # ============================================================
 
 # Configuration
-DAEMON_DIR="/var/lib/boot2docker/extension/dk_proxyd"
-DAEMON_START_BIN="$DAEMON_DIR/bin/start_transparent_proxy.sh"
-DAEMON_STOP_BIN="$DAEMON_DIR/bin/stop_transparent_proxy.sh"
+DAEMON_DIR="/var/lib/boot2docker/extension/daemons/syncd"
+DAEMON_BIN="$DAEMON_DIR/bin/syncd.sh"
 DAEMON_USER="root"
-DAEMON_NAME="dk_proxyd"
-DAEMON_PID_FILE="/var/run/2d-dk-proxyd.pid"
+DAEMON_NAME="syncd"
+DAEMON_PID_FILE="/var/run/syncd.pid"
 
 # Test binary existence
-test -x $DAEMON_START_BIN || exit 1
-test -x $DAEMON_STOP_BIN || exit 1
+test -x $DAEMON_BIN || exit 1
 
 # Checks daemon
-b2d_dk_proxyd_check() {
+syncd_check() {
     [ -f $DAEMON_PID_FILE ] && ps -A -o pid | grep "^\s*$(cat $DAEMON_PID_FILE)$" > /dev/null 2>&1
 }
 
 # Daemon start
-b2d_dk_proxyd_start () {
-    if b2d_dk_proxyd_check; then
+syncd_start () {
+    if syncd_check; then
         echo "$DAEMON_NAME is already running!"
     else
         echo "Starting system $DAEMON_NAME daemon..."
-        $DAEMON_START_BIN
+        $DAEMON_BIN &
         echo "$!" > $DAEMON_PID_FILE
     fi
 }
 
 # Daemon stop
-b2d_dk_proxyd_stop () {
-    if b2d_dk_proxyd_check; then
+syncd_stop () {
+    if syncd_check; then
         echo "Stopping system $DAEMON_NAME daemon..."
-        $DAEMON_STOP_BIN
+        kill $(cat $DAEMON_PID_FILE)
         rm -f $DAEMON_PID_FILE
     else
         echo "$DAEMON_NAME is already stopped!"
@@ -44,8 +42,8 @@ b2d_dk_proxyd_stop () {
 }
 
 # Show daemon status
-b2d_dk_proxyd_status() {
-    if b2d_dk_proxyd_check; then
+syncd_status() {
+    if syncd_check; then
         echo "$DAEMON_NAME daemon is running"
         exit 0
     else
@@ -55,21 +53,21 @@ b2d_dk_proxyd_status() {
 }
 
 # Help on usage
-b2d_dk_proxyd_usage(){
+syncd_usage(){
     echo "Usage: $DAEMON_BIN start/stop/status"
     echo
-    echo "Starts or stop a small b2d docker transparent proxy daemon."
+    echo "Starts or stop a small b2d sync daemon that sync every 2 seconds."
 }
 
 # Sub commands management
 case "$1" in
-    start) b2d_dk_proxyd_start
+    start) syncd_start
         ;;
-    stop) b2d_dk_proxyd_stop
+    stop) syncd_stop
         ;;
-    status) b2d_dk_proxyd_status
+    status) syncd_status
         ;;
-    *) b2d_dk_proxyd_usage
+    *) syncd_usage
         ;;
 esac
 exit 0
