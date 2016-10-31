@@ -29,7 +29,7 @@ CUSTOM_PROXY_PAC="${BOOT2DOCKER_EXTENSION_DIR}/proxy/proxy.pac"
 if [ -z $CUSTOM_PROXY_PAC ];then
     # run transparent proxy using wpad
     echo "[INFO] Use proxy set in default auto detected proxy pac"
-    docker run --name=transparent-proxy --net=host -d amontaigu/transparent-proxy http://wpad/wpad.dat
+    docker run --name=transparent-proxy --net=host -d amontaigu/transparent-proxy:0.1.0 http://wpad/wpad.dat
 else
     # run transparent with custom config
     echo "[INFO] Use your personal setting"
