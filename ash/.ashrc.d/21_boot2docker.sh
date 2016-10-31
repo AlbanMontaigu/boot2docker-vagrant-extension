@@ -23,8 +23,10 @@ b2d_sync_help(){
 
 
 # ------------------------------------------------------------
-# b2d sync daemon management
+# syncd daemon management
 # ------------------------------------------------------------
+
+# syncd daemon wrapper in a b2d subcommand
 b2d_syncd(){
     sudo $BOOT2DOCKER_EXTENSION_DIR/daemons/syncd/init.d/b2d-syncd.sh "$1"
 }
@@ -103,30 +105,19 @@ b2d_proxy_help(){
 
 
 # ------------------------------------------------------------
-# Transparent proxy for the containers with redsocks
+# Transparent proxy for the containers
 # ------------------------------------------------------------
 
-# Cmd to manage dk-redsocks container
-b2d_dk_redsocks(){
-    B2D_DK_REDSOCKS_SCRIPT="$BOOT2DOCKER_EXTENSION_DIR/dk-redsocks/dk-resocks.sh"
-    case "$1" in
-        start) $B2D_DK_REDSOCKS_SCRIPT start
-            ;;
-        stop) $B2D_DK_REDSOCKS_SCRIPT stop
-            ;;
-        restart) $B2D_DK_REDSOCKS_SCRIPT stop
-            $B2D_DK_REDSOCKS_SCRIPT start
-            ;;
-        *) b2d_dk_redsocks_help
-            ;;
-    esac
+# dk-proxyd daemon wrapper in a b2d subcommand
+b2d_dk_proxyd(){
+    sudo $BOOT2DOCKER_EXTENSION_DIR/daemons/dk-proxyd/init.d/dk-proxyd.sh "$1"
 }
 
-# Integrated help for dk-redsocks cmd
-b2d_dk_redsocks_help(){
-    echo "Usage: b2d dk resocks start/stop"
+# dk proxyd command help
+b2d_dk_proxyd_help(){
+    echo "Usage: b2d dk proxyd start/stop/status"
     echo
-    echo "Start or stop redsocks in a container to act as a transparent proxy for your containers"
+    echo "Start or stop transparent proxy in a container for your containers"
 }
 
 
@@ -135,7 +126,7 @@ b2d_dk_redsocks_help(){
 # ------------------------------------------------------------
 b2d_dk(){
     case "$1" in
-        redsocks) b2d_dk_redsocks "$2"
+        proxyd) b2d_dk_proxyd "$2"
             ;;
         *) b2d_dk_custom_usage
             ;;
@@ -148,7 +139,7 @@ b2d_dk_custom_usage(){
     echo "b2d dk = commands to manage your docker daemon in your boot2docker environment."
     echo
     echo "b2d dk commands:"
-    echo "    redsocks  Start or stop redsocks in a container to act as a transparent proxy for your containers"
+    echo "    proxyd  Start or stop transparent proxy in a container for your containers"
 }
 
 
