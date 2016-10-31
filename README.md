@@ -6,7 +6,7 @@ Standard extension files proposal for a vagrant boot2docker environment.
 
 **It should run with [vagrant-boot2docker-box](https://github.com/AlbanMontaigu/boot2docker-vagrant-box) and a project with [vagrant-boot2docker-template](https://github.com/AlbanMontaigu/boot2docker-vagrant-template) included all with appropriate versions.**
 
-This extension is the heart of environment features and commands but **the finest part will comme from [docker-toolbox](https://github.com/AlbanMontaigu/docker-toolbox)** that you can run with ```dk tb``` command. This will bring you in a custom container with compose and lot of other commands. To exit, just type ```exit```.
+This extension is the heart of environment features and commands but **the finest part will come from [docker-toolbox](https://github.com/AlbanMontaigu/docker-toolbox)** that you can run with ```dk tb``` command. This will bring you in a custom container with compose and lot of other commands. To exit, just type ```exit```.
 
 **Important:** please note that all indications below consider that you are in your box run with the [vagrant-boot2docker-template](https://github.com/AlbanMontaigu/boot2docker-vagrant-template).
 
@@ -40,17 +40,13 @@ Just type ```dc``` to see available commands list.
 
 Here you have all custom commands loaded in your environment by this extension.
 
-### b2d-syncd
+### Deamons
 
-Daemon to auto sync small files modifications between the host and the box.
+Provide some custom services that run in backgroud to ease the life in the boot2docker world. See inside the folder to know available daemons.
 
 ### bootlocal.sh.d
 
 Contains all scripts dynamically run by ```bootlocal.sh```.
-
-### dk-redsocks
-
-Contains daemon files to run a redsocks docker container an allow transparent proxy management for containers.
 
 ### param.d
 
@@ -62,7 +58,7 @@ Contains all scripts dynamically run by ```provision.sh```.
 
 ### proxy
 
-Contains all your custom proxy definition to load them as a simple profile with built in ```b2d proxy``` commands.
+Contains all your custom proxy definition files. See inside the folder to know which files can be put here with their related usage.
 
 ### bootlocal.sh, param.sh, provision.sh
 
@@ -76,4 +72,4 @@ Their twin's in the template project will execute them one in the same stage. Re
 
 By default, files are shared between your host and your box with *Virtualbox Guest additions* system.
 
-For very small modifications on your files on your host, it may not sync with your boot2docker. Since ```1.10.2``` I have added some ```b2d-syncd``` daemon to refresh regularly the files *(every 2 sec)*. This can do some small overload so you can stop it with ```b2d syncd stop``` and do a manual ```b2d sync``` when requested.
+For very small modifications on your files on your host, it may not sync with your boot2docker. Since ```1.10.2``` I have added some ```syncd``` daemon to refresh regularly the files *(every 2 sec)*. This can do some small overload so you can stop it with ```b2d syncd stop``` and do a manual ```b2d sync``` when requested.
