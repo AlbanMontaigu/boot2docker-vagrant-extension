@@ -58,7 +58,7 @@ dk_proxyd_status() {
 dk_proxyd_usage(){
     echo "Usage: $DAEMON_BIN start/stop/status"
     echo
-    echo "Starts or stop a small b2d docker transparent proxy daemon."
+    echo "Starts or stop a small docker transparent proxy daemon."
 }
 
 # Sub commands management
