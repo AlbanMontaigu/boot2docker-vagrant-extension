@@ -33,7 +33,7 @@ if [ -z $CUSTOM_PROXY_PAC ];then
 else
     # run transparent with custom config
     echo "[INFO] Use your personal setting"
-    docker run --name=transparent-proxy --net=host -v $CUSTOM_PROXY_PAC:/mnt/proxy.pac -d amontaigu/transparent-proxy file:///mnt/proxy.pac
+    docker run --name=transparent-proxy --net=host -v $CUSTOM_PROXY_PAC:/mnt/proxy.pac -d amontaigu/transparent-proxy:0.1.0 file:///mnt/proxy.pac
 fi
 echo "[INFO] OK, transparent proxy is started"
 
