@@ -1,8 +1,8 @@
 
 ## 1.12.3 (2016-10-31)
-- UPDATE: Update to boot2docker 1.12.3
-- UPDATE: Update to my docker-toolbox 1.12.3
-- FEATURE: Docker toolbox container name removed to allow multiple run of ```dk tb``` on the same b2d
+- UPDATE: update to boot2docker 1.12.3
+- UPDATE: update to my docker-toolbox 1.12.3
+- FEATURE: docker toolbox container name removed to allow multiple run of ```dk tb``` on the same b2d
 - FEATURE: redsocks service removed for transparent-proxy service future use
 - FEATURE: [transparent-proxy](https://github.com/AlbanMontaigu/docker-transparent-proxy) service added
 - FEATURE: now daemons files are located in ```daemons``` folder
