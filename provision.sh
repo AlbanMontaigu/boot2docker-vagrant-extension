@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # ===================================================================
-# Provisionning script executed during vagrant provision
+# Provisioning script executed during vagrant provision
 # ===================================================================
 
 

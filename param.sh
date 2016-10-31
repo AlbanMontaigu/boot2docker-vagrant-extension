@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # ===================================================================
-# Provisionning script executed during vagrant provision to
+# Provisioning script executed during vagrant provision to
 # change persistent param located in param dir.
 # ===================================================================
 
