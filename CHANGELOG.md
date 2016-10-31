@@ -3,7 +3,8 @@
 - UPDATE: Update to boot2docker 1.12.3
 - UPDATE: Update to my docker-toolbox 1.12.3
 - FEATURE: Docker toolbox container name removed to allow multiple run of ```dk tb``` on the same b2d
-- FEATURE: Sample ```dk-resocks-whitelist.txt``` added
+- FEATURE: redsocks service removed for transparent-proxy service future use
+- FEATURE: [transparent-proxy](https://github.com/AlbanMontaigu/docker-transparent-proxy) service added
 
 ## 1.12.2 (2016-10-25)
 - Update to boot2docker 1.12.2
