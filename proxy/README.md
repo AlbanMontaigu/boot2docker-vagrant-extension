@@ -1,4 +1,6 @@
-# Proxy profiles place holder
+# Proxy configuration files place holder
+
+## b2d proxy change cmd profile definition
 
 Your can store here the proxy profile configuration.
 

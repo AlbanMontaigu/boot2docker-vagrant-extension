@@ -6,6 +6,7 @@
 - FEATURE: redsocks service removed for transparent-proxy service future use
 - FEATURE: [transparent-proxy](https://github.com/AlbanMontaigu/docker-transparent-proxy) service added
 - FEATURE: now daemons files are located in ```daemons``` folder
+- UPDATE: now sample proxy file is removed since readme gives the right info (avoid unused files)
 
 ## 1.12.2 (2016-10-25)
 - Update to boot2docker 1.12.2
