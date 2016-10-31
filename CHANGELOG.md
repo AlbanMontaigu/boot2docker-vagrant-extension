@@ -2,6 +2,7 @@
 ## 1.12.2 (2016-10-31)
 - Update to boot2docker 1.12.3
 - Update to my docker-toolbox 1.12.3
+- Docker toolbox container name removed to allow multiple run of ```dk tb``` on the same b2d
 
 ## 1.12.2 (2016-10-25)
 - Update to boot2docker 1.12.2

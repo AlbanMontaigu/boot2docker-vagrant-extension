@@ -113,7 +113,6 @@ dk_toolbox(){
                     -e DKTB_EXTENSION_REPO="$DKTB_EXTENSION_REPO" \
                     -e DKTB_EXTENSION_VERSION="$DKTB_EXTENSION_VERSION" \
                     $(dk_proxy_flags) \
-                    --name docker-toolbox \
                     amontaigu/docker-toolbox:$DKTB_VERSION
     else
             sx docker run -it --rm  \
@@ -122,7 +121,6 @@ dk_toolbox(){
                 -w="/vagrant" \
                 -e COMPOSE_PROJECT_NAME="$COMPOSE_PROJECT_NAME" \
                 $(dk_proxy_flags) \
-                --name docker-toolbox \
                 amontaigu/docker-toolbox:$DKTB_VERSION
     fi
 }
