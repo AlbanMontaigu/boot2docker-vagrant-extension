@@ -26,14 +26,14 @@ sudo iptables -t nat -A PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type U
 # Now starting transparent proxy service in a container
 echo "[INFO] Launching transparent proxy service ..."
 CUSTOM_PROXY_PAC="${BOOT2DOCKER_EXTENSION_DIR}/proxy/proxy.pac"
-if [ -f "{$CUSTOM_PROXY_PAC}" ];then
-    # run transparent proxy using wpad
-    echo "[INFO] Use proxy set in default auto detected proxy pac"
-    docker run --name=transparent-proxy --net=host -d amontaigu/transparent-proxy:0.1.0 http://wpad/wpad.dat
-else
+if [ -f "${CUSTOM_PROXY_PAC}" ]; then
     # run transparent with custom config
     echo "[INFO] Use your personal setting"
     docker run --name=transparent-proxy --net=host -v $CUSTOM_PROXY_PAC:/mnt/proxy.pac -d amontaigu/transparent-proxy:0.1.0 file:///mnt/proxy.pac
+else
+    # run transparent proxy using wpad
+    echo "[INFO] Use proxy set in default auto detected proxy pac"
+    docker run --name=transparent-proxy --net=host -d amontaigu/transparent-proxy:0.1.0 http://wpad/wpad.dat
 fi
 echo "[INFO] OK, transparent proxy is started"
 
