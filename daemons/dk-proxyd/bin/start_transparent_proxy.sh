@@ -9,19 +9,19 @@ docker rm -f transparent-proxy 2>/dev/null || true
 
 # First we added a new chain called 'TRANSPROXY' to the 'nat' table.
 echo "[INFO] Set networking rules ..."
-sudo iptables -t nat -N TRANSPROXY 2>/dev/null || true
+/usr/local/sbin/iptables -t nat -N TRANSPROXY 2>/dev/null || true
 
 # We then told iptables to redirect all port 80 connections to the http-relay port
-sudo iptables -t nat -C TRANSPROXY -p tcp --dport 80 -j REDIRECT --to-ports 3128 -w 2>/dev/null || \
-sudo iptables -t nat -A TRANSPROXY -p tcp --dport 80 -j REDIRECT --to-ports 3128 -w
+/usr/local/sbin/iptables -t nat -C TRANSPROXY -p tcp --dport 80 -j REDIRECT --to-ports 3128 -w 2>/dev/null || \
+/usr/local/sbin/iptables -t nat -A TRANSPROXY -p tcp --dport 80 -j REDIRECT --to-ports 3128 -w
 
 # and all other connections to the http-connect port.
-sudo iptables -t nat -C TRANSPROXY -p tcp -j REDIRECT --to-ports 12345 -w 2>/dev/null || \
-sudo iptables -t nat -A TRANSPROXY -p tcp -j REDIRECT --to-ports 12345 -w
+/usr/local/sbin/iptables -t nat -C TRANSPROXY -p tcp -j REDIRECT --to-ports 12345 -w 2>/dev/null || \
+/usr/local/sbin/iptables -t nat -A TRANSPROXY -p tcp -j REDIRECT --to-ports 12345 -w
 
 # Finally we tell iptables to use the ‘TRANSPROXY’ chain for all outgoing connection in docker containers
-sudo iptables -t nat -C PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8 2>/dev/null || \
-sudo iptables -t nat -A PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8
+/usr/local/sbin/iptables -t nat -C PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8 2>/dev/null || \
+/usr/local/sbin/iptables -t nat -A PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8
 
 # Now starting transparent proxy service in a container
 echo "[INFO] Launching transparent proxy service ..."
