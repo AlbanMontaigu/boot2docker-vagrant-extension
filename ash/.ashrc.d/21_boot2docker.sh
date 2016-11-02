@@ -133,6 +133,7 @@ b2d_dk_ibackup(){
     # Configuration and preparation
     set -e
     echo "[INFO] Will save all your local b2d docker images to ${BOOT2DOCKER_DK_IMAGES_SAVE_DIR} !"
+    echo "[INFO] Cleaning previous backup"
     rm -rvf "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}"
     mkdir -p "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}"
     echo "[INFO] [$(date +"%T")] Starting save"
