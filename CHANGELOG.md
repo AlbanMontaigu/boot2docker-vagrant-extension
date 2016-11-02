@@ -10,7 +10,7 @@
 - FEATURE: now daemons files are located in ```daemons``` folder
 - FEATURE: ```b2d dk ibackup``` command added to backup all your images to a local folder
 - FEATURE: ```b2d dk irestore``` command added to restore all your images from a local folder
-- FEATURE: ```b2d dk iremove``` command added to remove all your docker images (```dk rmi``` on all ```dk images```)
+- FEATURE: ```b2d dk iremove [backups]``` command added to remove all your docker images (```dk rmi``` on all ```dk images```) or backups (ibackup)
 
 ## 1.12.2 (2016-10-25)
 - Update to boot2docker 1.12.2
