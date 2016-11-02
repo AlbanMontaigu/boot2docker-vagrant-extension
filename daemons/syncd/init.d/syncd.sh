@@ -22,9 +22,9 @@ syncd_check() {
 # Daemon start
 syncd_start () {
     if syncd_check; then
-        echo "$DAEMON_NAME is already running!"
+        echo "[WARN] $DAEMON_NAME is already running!"
     else
-        echo "Starting system $DAEMON_NAME daemon..."
+        echo "[INFO] Starting system $DAEMON_NAME daemon..."
         $DAEMON_BIN &
         echo "$!" > $DAEMON_PID_FILE
     fi
@@ -33,21 +33,21 @@ syncd_start () {
 # Daemon stop
 syncd_stop () {
     if syncd_check; then
-        echo "Stopping system $DAEMON_NAME daemon..."
+        echo "[INFO] Stopping system $DAEMON_NAME daemon..."
         kill $(cat $DAEMON_PID_FILE)
         rm -f $DAEMON_PID_FILE
     else
-        echo "$DAEMON_NAME is already stopped!"
+        echo "[WARN] $DAEMON_NAME is already stopped!"
     fi
 }
 
 # Show daemon status
 syncd_status() {
     if syncd_check; then
-        echo "$DAEMON_NAME daemon is running"
+        echo "[INFO] $DAEMON_NAME daemon is running"
         exit 0
     else
-        echo "$DAEMON_NAME daemon is not running"
+        echo "[INFO] $DAEMON_NAME daemon is not running"
         exit 1
     fi
 }

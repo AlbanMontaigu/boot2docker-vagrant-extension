@@ -24,9 +24,9 @@ dk_proxyd_check() {
 # Daemon start
 dk_proxyd_start () {
     if dk_proxyd_check; then
-        echo "$DAEMON_NAME is already running!"
+        echo "[WARN] $DAEMON_NAME is already running!"
     else
-        echo "Starting system $DAEMON_NAME daemon..."
+        echo "[INFO] Starting system $DAEMON_NAME daemon..."
         $DAEMON_START_BIN
         echo "$!" > $DAEMON_PID_FILE
     fi
@@ -35,21 +35,21 @@ dk_proxyd_start () {
 # Daemon stop
 dk_proxyd_stop () {
     if dk_proxyd_check; then
-        echo "Stopping system $DAEMON_NAME daemon..."
+        echo "[INFO] Stopping system $DAEMON_NAME daemon..."
         $DAEMON_STOP_BIN
         rm -f $DAEMON_PID_FILE
     else
-        echo "$DAEMON_NAME is already stopped!"
+        echo "[WARN] $DAEMON_NAME is already stopped!"
     fi
 }
 
 # Show daemon status
 dk_proxyd_status() {
     if dk_proxyd_check; then
-        echo "$DAEMON_NAME daemon is running"
+        echo "[INFO] $DAEMON_NAME daemon is running"
         exit 0
     else
-        echo "$DAEMON_NAME daemon is not running"
+        echo "[INFO] $DAEMON_NAME daemon is not running"
         exit 1
     fi
 }
