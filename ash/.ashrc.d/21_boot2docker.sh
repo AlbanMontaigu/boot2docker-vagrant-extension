@@ -166,9 +166,6 @@ b2d_dk_irestore(){
 
     # Done !
     echo "[INFO] [$(date +"%T")] Restore completed completed !"
-    echo "[INFO] [$(date +"%T")] Removing images backups !"
-    rm -rvf "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}"
-    set +e
 }
 
 
