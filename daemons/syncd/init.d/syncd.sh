@@ -25,7 +25,7 @@ syncd_start () {
         echo "[WARN] $DAEMON_NAME is already running!"
     else
         echo "[INFO] Starting system $DAEMON_NAME daemon..."
-        $DAEMON_BIN &
+        nohup $DAEMON_BIN 0<&- &>/dev/null &
         echo "$!" > $DAEMON_PID_FILE
     fi
 }
