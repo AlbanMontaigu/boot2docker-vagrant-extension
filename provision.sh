@@ -17,7 +17,7 @@ export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
 # NOTE: prefix the files with a number to manage order
 # -------------------------------------------------------------------
 for provision_file in $BOOT2DOCKER_EXTENSION_DIR/provision.sh.d/* ; do
-    echo "-- Running ${provision_file}"
+    echo "[INFO] Running ${provision_file}"
     if [ -f $provision_file ]; then 
         source $provision_file
     fi
