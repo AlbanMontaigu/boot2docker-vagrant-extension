@@ -8,6 +8,9 @@
 - FEATURE: redsocks service removed for transparent-proxy service future use
 - FEATURE: [transparent-proxy](https://github.com/AlbanMontaigu/docker-transparent-proxy) service added
 - FEATURE: now daemons files are located in ```daemons``` folder
+- FEATURE: ```b2d dk ibackup``` command added to backup all your images to a local folder
+- FEATURE: ```b2d dk irestore``` command added to restore all your images from a local folder
+- FEATURE: ```b2d dk iremove``` command added to remove all your docker images (```dk rmi``` on all ```dk images```)
 
 ## 1.12.2 (2016-10-25)
 - Update to boot2docker 1.12.2
