@@ -2,12 +2,12 @@
 ## 1.12.3 (2016-10-31)
 - UPDATE: update to boot2docker 1.12.3
 - UPDATE: update to my docker-toolbox 1.12.3
+- UPDATE: now sample proxy file is removed since readme gives the right info (avoid unused files)
+- UPDATE: no more proxy flags for ```dk tb``` since you can activate transparent proxy
 - FEATURE: docker toolbox container name removed to allow multiple run of ```dk tb``` on the same b2d
 - FEATURE: redsocks service removed for transparent-proxy service future use
 - FEATURE: [transparent-proxy](https://github.com/AlbanMontaigu/docker-transparent-proxy) service added
 - FEATURE: now daemons files are located in ```daemons``` folder
-- UPDATE: now sample proxy file is removed since readme gives the right info (avoid unused files)
-- UPDATE: no more proxy flags for ```dk tb``` since you can activate transparent proxy
 
 ## 1.12.2 (2016-10-25)
 - Update to boot2docker 1.12.2
