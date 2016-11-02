@@ -122,6 +122,52 @@ b2d_dk_proxyd_help(){
 
 
 # ------------------------------------------------------------
+# Docker images backup
+# @ see https://stackoverflow.com/questions/26707542/how-to-backup-restore-docker-image-for-deployment
+# ------------------------------------------------------------
+
+b2d_dk_images_backup_create(){
+
+    # Configuration and preparation
+    DK_IMAGES_SAVE_DIR="/vagrant/.dk_images_backup"
+    echo "[INFO] Will save all your local docker images to ${DK_IMAGES_SAVE_DIR} !"
+    rm -rvf "${DK_IMAGES_SAVE_DIR}"
+    mkdir -p "${DK_IMAGES_SAVE_DIR}"
+    echo "[INFO] [$(date +"%T")] Starting save"
+
+    # Iterate each docker image
+    for dk_image in $(docker images --format "{{.Repository}}:{{.Tag}}") ; do
+        # Path without ':' char (replaced by '_')
+        path_dk_image_saved="${DK_IMAGES_SAVE_DIR}/$(echo ${dk_image} | sed 's#[/:]#_#g').tgz"
+        echo "[INFO] [$(date +"%T")] Now saving ${dk_image} to ${path_dk_image_saved}"
+        docker save "${dk_image}" | gzip -c > "${path_dk_image_saved}"
+    done
+
+    # Done !
+    echo "[INFO] [$(date +"%T")] Save completed !"
+}
+
+
+# ------------------------------------------------------------
+# Docker all images remove
+# ------------------------------------------------------------
+
+b2d_dk_images_remove(){
+
+    # Done !
+    echo "[INFO] [$(date +"%T")] Will remove all your images !"
+
+    # Iterate each docker image
+    for dk_image in $(docker images --format "{{.Repository}}:{{.Tag}}") ; do
+        echo "[INFO] [$(date +"%T")] Now removing ${dk_image}"
+        docker rmi "${dk_image}"
+    done
+
+    # Done !
+    echo "[INFO] [$(date +"%T")] Remove completed !"
+}
+
+# ------------------------------------------------------------
 # Boot2docker dk subcommand
 # ------------------------------------------------------------
 b2d_dk(){
