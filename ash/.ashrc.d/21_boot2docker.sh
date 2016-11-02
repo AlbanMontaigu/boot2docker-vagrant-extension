@@ -197,6 +197,12 @@ b2d_dk_iremove(){
 # ------------------------------------------------------------
 b2d_dk(){
     case "$1" in
+        ibackup) b2d_dk_ibackup
+            ;;
+        irestore) b2d_dk_irestore
+            ;;
+        iremove) b2d_dk_iremove
+            ;;
         proxyd) b2d_dk_proxyd "$2"
             ;;
         *) b2d_dk_custom_usage
@@ -210,7 +216,11 @@ b2d_dk_custom_usage(){
     echo "b2d dk = commands to manage your docker daemon in your boot2docker environment."
     echo
     echo "b2d dk commands:"
-    echo "    proxyd  Start or stop transparent proxy in a container for your containers"
+    echo "    ibackup     Backup all your b2d docker images to a folder in your project"
+    echo "    irestore    Restore all your b2d docker images from a folder in your project"
+    echo "    iremove     Remove all your b2d docker images (dk rmi on all dk images)"
+    echo "    proxyd      Start or stop transparent proxy in a container for your containers"
+    echo "    proxyd      Start or stop transparent proxy in a container for your containers"
 }
 
 
