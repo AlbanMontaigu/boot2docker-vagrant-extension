@@ -109,7 +109,7 @@ b2d_proxy_help(){
 # Transparent proxy for the containers
 # ------------------------------------------------------------
 
-# dk-proxyd daemon wrapper in a b2d subcommand
+# dk_proxyd daemon wrapper in a b2d subcommand
 b2d_dk_proxyd(){
     sudo $BOOT2DOCKER_EXTENSION_DIR/daemons/dk_proxyd/init.d/dk_proxyd.sh "$1"
 }
