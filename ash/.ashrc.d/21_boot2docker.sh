@@ -220,7 +220,6 @@ b2d_dk_custom_usage(){
     echo "    irestore    Restore all your b2d docker images from a folder in your project"
     echo "    iremove     Remove all your b2d docker images (dk rmi on all dk images)"
     echo "    proxyd      Start or stop transparent proxy in a container for your containers"
-    echo "    proxyd      Start or stop transparent proxy in a container for your containers"
 }
 
 
