@@ -127,8 +127,8 @@ b2d_dk_proxyd_help(){
 # @ see https://stackoverflow.com/questions/26707542/how-to-backup-restore-docker-image-for-deployment
 # ------------------------------------------------------------
 
-# Backup creation
-b2d_dk_images_backup_create(){
+# Backup creation for boot2docker images
+b2d_dk_ibackup(){
 
     # Configuration and preparation
     set -e
@@ -150,8 +150,8 @@ b2d_dk_images_backup_create(){
     set +e
 }
 
-# Backup restoration
-b2d_dk_images_backup_restore(){
+# Backup restoration for boot2docker images
+b2d_dk_irestore(){
 
     # Configuration and preparation
     set -e
@@ -176,7 +176,7 @@ b2d_dk_images_backup_restore(){
 # Docker all images remove
 # ------------------------------------------------------------
 
-b2d_dk_images_remove(){
+b2d_dk_iremove(){
 
     # Done !
     echo "[INFO] [$(date +"%T")] Will remove all your images !"
@@ -190,6 +190,7 @@ b2d_dk_images_remove(){
     # Done !
     echo "[INFO] [$(date +"%T")] Remove completed !"
 }
+
 
 # ------------------------------------------------------------
 # Boot2docker dk subcommand
