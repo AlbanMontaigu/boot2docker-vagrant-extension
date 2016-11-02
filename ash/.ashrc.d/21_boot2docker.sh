@@ -136,18 +136,18 @@ b2d_dk_ibackup(){
     echo "[INFO] Cleaning previous backup"
     rm -rvf "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}"
     mkdir -p "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}"
-    echo "[INFO] [$(date +"%T")] Starting save"
+    echo "[INFO][$(date +"%T")] Starting save"
 
     # Iterate each docker image
     for b2d_dk_image in $(docker images --format "{{.Repository}}:{{.Tag}}") ; do
         # Path without ':' char (replaced by '_')
         path_b2d_dk_image_saved="${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}/$(echo ${b2d_dk_image} | sed 's#[/:]#_#g').tgz"
-        echo "[INFO] [$(date +"%T")] Now saving ${b2d_dk_image} to ${path_b2d_dk_image_saved}"
+        echo "[INFO][$(date +"%T")] Now saving ${b2d_dk_image} to ${path_b2d_dk_image_saved}"
         docker save "${b2d_dk_image}" | gzip -c > "${path_b2d_dk_image_saved}"
     done
 
     # Done !
-    echo "[INFO] [$(date +"%T")] Save completed !"
+    echo "[INFO][$(date +"%T")] Save completed !"
     set +e
 }
 
@@ -160,16 +160,16 @@ b2d_dk_irestore(){
 
     # Check if backup dir is present
     if [ -d "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}" ]; then
-        echo "[INFO] [$(date +"%T")] Starting restore"
+        echo "[INFO][$(date +"%T")] Starting restore"
 
         # For each saved image
         for b2d_dk_image_saved in $BOOT2DOCKER_DK_IMAGES_SAVE_DIR/*.tgz ; do
-            echo "[INFO] [$(date +"%T")] Now restoring ${b2d_dk_image_saved}"
+            echo "[INFO][$(date +"%T")] Now restoring ${b2d_dk_image_saved}"
             gunzip -c "${b2d_dk_image_saved}" | docker load
         done
 
         # Done !
-        echo "[INFO] [$(date +"%T")] Restore completed completed !"
+        echo "[INFO][$(date +"%T")] Restore completed completed !"
     else
         echo "[INFO] No backup to restore !"
     fi
@@ -185,23 +185,23 @@ b2d_dk_iremove(){
 
     # Remove backups only
     if [[ "${1}" == "backups" ]]; then
-        echo "[INFO] [$(date +"%T")] Removing images backups !"
+        echo "[INFO][$(date +"%T")] Removing images backups !"
         rm -rvf "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}"
-         echo "[INFO] [$(date +"%T")] Images backup remove completed !"
+         echo "[INFO][$(date +"%T")] Images backup remove completed !"
         return 0
     fi
 
     # Done !
-    echo "[INFO] [$(date +"%T")] Will remove all your images !"
+    echo "[INFO][$(date +"%T")] Will remove all your images !"
 
     # Iterate each docker image
     for b2d_dk_image in $(docker images --format "{{.Repository}}:{{.Tag}}") ; do
-        echo "[INFO] [$(date +"%T")] Now removing ${b2d_dk_image}"
+        echo "[INFO][$(date +"%T")] Now removing ${b2d_dk_image}"
         docker rmi "${b2d_dk_image}"
     done
 
     # Done !
-    echo "[INFO] [$(date +"%T")] Images remove completed !"
+    echo "[INFO][$(date +"%T")] Images remove completed !"
 }
 
 
