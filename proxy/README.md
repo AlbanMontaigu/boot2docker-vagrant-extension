@@ -21,11 +21,11 @@ no_proxy=localhost,127.0.0.1
 
 ## b2d syncd with custom proxy.pac
 
-By default, the docker transparent proxy daemon ```dk-proxyd``` uses ```http://wpad/wpad.dat``` to try to autodetect the proxy configuration file.
+By default, the docker transparent proxy daemon ```dk_proxyd``` uses ```http://wpad/wpad.dat``` to try to autodetect the proxy configuration file.
 
 If you don't have this file on your network you can define your own by adding a ```proxy.pac``` file in this folder.
 
-The ```dk-proxyd``` will auto-detect it and use it directly instead of wpad method.
+The ```dk_proxyd``` will auto-detect it and use it directly instead of wpad method.
 
 **Sample proxy.pac:**
 
