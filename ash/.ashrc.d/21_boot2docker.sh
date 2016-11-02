@@ -1,3 +1,4 @@
+#@IgnoreInspection BashAddShebang
 
 # ============================================================
 # Boot2docker custom commands
@@ -126,25 +127,48 @@ b2d_dk_proxyd_help(){
 # @ see https://stackoverflow.com/questions/26707542/how-to-backup-restore-docker-image-for-deployment
 # ------------------------------------------------------------
 
+# Backup creation
 b2d_dk_images_backup_create(){
 
     # Configuration and preparation
-    DK_IMAGES_SAVE_DIR="/vagrant/.dk_images_backup"
-    echo "[INFO] Will save all your local docker images to ${DK_IMAGES_SAVE_DIR} !"
-    rm -rvf "${DK_IMAGES_SAVE_DIR}"
-    mkdir -p "${DK_IMAGES_SAVE_DIR}"
+    set -e
+    echo "[INFO] Will save all your local b2d docker images to ${BOOT2DOCKER_DK_IMAGES_SAVE_DIR} !"
+    rm -rvf "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}"
+    mkdir -p "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}"
     echo "[INFO] [$(date +"%T")] Starting save"
 
     # Iterate each docker image
-    for dk_image in $(docker images --format "{{.Repository}}:{{.Tag}}") ; do
+    for b2d_dk_image in $(docker images --format "{{.Repository}}:{{.Tag}}") ; do
         # Path without ':' char (replaced by '_')
-        path_dk_image_saved="${DK_IMAGES_SAVE_DIR}/$(echo ${dk_image} | sed 's#[/:]#_#g').tgz"
-        echo "[INFO] [$(date +"%T")] Now saving ${dk_image} to ${path_dk_image_saved}"
-        docker save "${dk_image}" | gzip -c > "${path_dk_image_saved}"
+        path_b2d_dk_image_saved="${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}/$(echo ${b2d_dk_image} | sed 's#[/:]#_#g').tgz"
+        echo "[INFO] [$(date +"%T")] Now saving ${b2d_dk_image} to ${path_b2d_dk_image_saved}"
+        docker save "${b2d_dk_image}" | gzip -c > "${path_b2d_dk_image_saved}"
     done
 
     # Done !
     echo "[INFO] [$(date +"%T")] Save completed !"
+    set +e
+}
+
+# Backup restoration
+b2d_dk_images_backup_restore(){
+
+    # Configuration and preparation
+    set -e
+    echo "[INFO] Will restore all your b2d docker images from ${BOOT2DOCKER_DK_IMAGES_SAVE_DIR} !"
+    echo "[INFO] [$(date +"%T")] Starting restore"
+
+    # For each saved image
+    for b2d_dk_image_saved in $BOOT2DOCKER_DK_IMAGES_SAVE_DIR/*.tgz ; do
+        echo "[INFO] [$(date +"%T")] Now restoring ${b2d_dk_image_saved}"
+        gunzip -c "${b2d_dk_image_saved}" | docker load
+    done
+
+    # Done !
+    echo "[INFO] [$(date +"%T")] Restore completed completed !"
+    echo "[INFO] [$(date +"%T")] Removing images backups !"
+    rm -rvf "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}"
+    set +e
 }
 
 
@@ -158,9 +182,9 @@ b2d_dk_images_remove(){
     echo "[INFO] [$(date +"%T")] Will remove all your images !"
 
     # Iterate each docker image
-    for dk_image in $(docker images --format "{{.Repository}}:{{.Tag}}") ; do
-        echo "[INFO] [$(date +"%T")] Now removing ${dk_image}"
-        docker rmi "${dk_image}"
+    for b2d_dk_image in $(docker images --format "{{.Repository}}:{{.Tag}}") ; do
+        echo "[INFO] [$(date +"%T")] Now removing ${b2d_dk_image}"
+        docker rmi "${b2d_dk_image}"
     done
 
     # Done !
