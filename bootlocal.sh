@@ -19,6 +19,7 @@ export HOME_DOCKER_USER="/home/docker"
 # NOTE: prefix the files with a number to manage order
 # -------------------------------------------------------------------
 for bootlocal_file in $BOOT2DOCKER_EXTENSION_DIR/bootlocal.sh.d/* ; do
+    echo "-- Running ${bootlocal_file}"
     if [ -f $bootlocal_file ]; then 
         source $bootlocal_file
     fi
