@@ -10,7 +10,7 @@ DAEMON_START_BIN="$DAEMON_DIR/bin/start_transparent_proxy.sh"
 DAEMON_STOP_BIN="$DAEMON_DIR/bin/stop_transparent_proxy.sh"
 DAEMON_USER="root"
 DAEMON_NAME="dk_proxyd"
-DAEMON_PID_FILE="/var/run/dk_proxyd.pid"
+DAEMON_DK_CONTAINER="transparent-proxy"
 
 # Test binary existence
 test -x $DAEMON_START_BIN || exit 1
@@ -18,7 +18,8 @@ test -x $DAEMON_STOP_BIN || exit 1
 
 # Checks daemon
 dk_proxyd_check() {
-    [ -f $DAEMON_PID_FILE ] && ps -A -o pid | grep "^\s*$(cat $DAEMON_PID_FILE)$" > /dev/null 2>&1
+    RUNNING=$(docker inspect --format="{{ .State.Running }}" $DAEMON_DK_CONTAINER 2> /dev/null)
+    [ "$RUNNING" == "true" ]
 }
 
 # Daemon start
@@ -28,7 +29,6 @@ dk_proxyd_start () {
     else
         echo "[INFO] Starting system $DAEMON_NAME daemon..."
         $DAEMON_START_BIN
-        echo "$!" > $DAEMON_PID_FILE
     fi
 }
 
@@ -37,7 +37,6 @@ dk_proxyd_stop () {
     if dk_proxyd_check; then
         echo "[INFO] Stopping system $DAEMON_NAME daemon..."
         $DAEMON_STOP_BIN
-        rm -f $DAEMON_PID_FILE
     else
         echo "[WARN] $DAEMON_NAME is already stopped!"
     fi
