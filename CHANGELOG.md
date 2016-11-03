@@ -12,6 +12,7 @@
 - FEATURE: ```b2d dk ibackup``` command added to backup all your images to a local folder
 - FEATURE: ```b2d dk irestore``` command added to restore all your images from a local folder
 - FEATURE: ```b2d dk iremove [backups]``` command added to remove all your docker images (```dk rmi``` on all ```dk images```) or backups (ibackup)
+- FEATURE: now ```dk_proxyd``` will try to auto detect your proxy context to select the right proxy configuration files (see README.md in the proxy folder)
 - BUGFIX: updated syncd daemon lunching process to avoid bugs when capturing logs with tee on bootlocal
 
 ## 1.12.2 (2016-10-25)

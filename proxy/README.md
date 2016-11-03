@@ -19,6 +19,8 @@ ftp_proxy=
 no_proxy=localhost,127.0.0.1
 ```
 
+**Important:** you should use a prefix in your filename like ```fr_proxy``` to help other custom feature like auto pac auto select depending your prefix.
+
 ## b2d syncd with custom proxy.pac
 
 By default, the docker transparent proxy daemon ```dk_proxyd``` uses ```http://wpad/wpad.dat``` to try to autodetect the proxy configuration file.
@@ -26,6 +28,12 @@ By default, the docker transparent proxy daemon ```dk_proxyd``` uses ```http://w
 If you don't have this file on your network you can define your own by adding a ```proxy.pac``` file in this folder.
 
 The ```dk_proxyd``` will auto-detect it and use it directly instead of wpad method.
+
+**Important:** if you have multiple proxy.pac depending your country for instance, you can prefix the proxy.pac like your proxy definition, ex: ```fr_proxy.pac```. With this system, b2d will associate the right proxy.pac with your current proxy definition (red from http_proxy env var)*[]: 
+
+If your proxy.pac is stored somewhere on your network, just put the url inside a ```proxy.pac.url``` file. Don't forget to use the right prefix if requested (see previous important note). 
+
+The configuration are selected in the following priority: proxy.pac, proxy.pac.url, default wpad system.
 
 **Sample proxy.pac:**
 

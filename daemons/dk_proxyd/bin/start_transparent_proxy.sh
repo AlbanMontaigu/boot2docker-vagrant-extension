@@ -23,13 +23,22 @@ echo "[INFO] Set networking rules ..."
 /usr/local/sbin/iptables -t nat -C PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8 2>/dev/null || \
 /usr/local/sbin/iptables -t nat -A PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8
 
+# Try to auto detect region profile by checking proxy value
+PROXY_FILE=$(grep -l -m 1 $BOOT2DOCKER_EXTENSION_DIR/proxy/* -e "${http_proxy:-_NA_}" | head -1)
+PROXY_PREFIX=$(echo -n "${PROXY_FILE}" | cut -d '_' -f1)
+
 # Now starting transparent proxy service in a container
 echo "[INFO] Launching transparent proxy service ..."
-CUSTOM_PROXY_PAC="${BOOT2DOCKER_EXTENSION_DIR}/proxy/proxy.pac"
+CUSTOM_PROXY_PAC="${BOOT2DOCKER_EXTENSION_DIR}/proxy/${PROXY_PREFIX}_proxy.pac"
+CUSTOM_PROXY_PAC_URL_FILE="${CUSTOM_PROXY_PAC}.url"
 if [ -f "${CUSTOM_PROXY_PAC}" ]; then
     # run transparent with custom config
-    echo "[INFO] Use your personal setting"
+    echo "[INFO] Use your ${CUSTOM_PROXY_PAC}"
     docker run --name=transparent-proxy --net=host -v $CUSTOM_PROXY_PAC:/mnt/proxy.pac -d amontaigu/transparent-proxy:0.1.0 file:///mnt/proxy.pac
+elif [ -f "${CUSTOM_PROXY_PAC_URL}" ]; then
+    echo "[INFO] Use your ${CUSTOM_PROXY_PAC_URL_FILE}"
+    CUSTOM_PROXY_PAC_URL="$(cat $CUSTOM_PROXY_PAC_URL_FILE)"
+    docker run --name=transparent-proxy --net=host -d amontaigu/transparent-proxy:0.1.0 "${CUSTOM_PROXY_PAC_URL}"
 else
     # run transparent proxy using wpad
     echo "[INFO] Use proxy set in default auto detected proxy pac"
