@@ -1,5 +1,5 @@
 
-## 1.12.3 (2016-11-02)
+## 1.12.3 (2016-11-03)
 - UPDATE: update to boot2docker 1.12.3
 - UPDATE: update to my docker-toolbox 1.12.3
 - UPDATE: now sample proxy file is removed since readme gives the right info (avoid unused files)
