@@ -6,11 +6,10 @@
 # ===================================================================
 
 
-# -------------------------------------------------------------------
-# Parametrization (for all environment)
-# -------------------------------------------------------------------
-export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
-export BOOT2DOCKER_EXTENSION_PARAM_DIR="$BOOT2DOCKER_EXTENSION_DIR/param.d"
+# ------------------------------------------------------------
+# Environment definition (params and so on)
+# ------------------------------------------------------------
+source /var/lib/boot2docker/extension/environment.sh
 
 
 # -------------------------------------------------------------------

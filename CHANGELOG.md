@@ -5,6 +5,7 @@
 - UPDATE: now sample proxy file is removed since readme gives the right info (avoid unused files)
 - UPDATE: no more proxy flags for ```dk tb``` since you can activate transparent proxy
 - UPDATE: logs improvements
+- UPDATE: now all param load are managed in ```environment.sh```
 - FEATURE: docker toolbox container name removed to allow multiple run of ```dk tb``` on the same b2d
 - FEATURE: redsocks service removed for transparent-proxy service future use
 - FEATURE: [transparent-proxy](https://github.com/AlbanMontaigu/docker-transparent-proxy) service added

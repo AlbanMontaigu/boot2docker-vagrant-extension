@@ -7,8 +7,7 @@
 #       a way to improve this later.
 # ===================================================================
 
-# Configuration and preparation
-BOOT2DOCKER_DK_IMAGES_SAVE_DIR="/vagrant/.vagrant/b2d_dk_images_backup"
+# General information
 echo "[INFO] Will restore all your b2d docker images from ${BOOT2DOCKER_DK_IMAGES_SAVE_DIR} !"
 
 # Check if backup dir is present

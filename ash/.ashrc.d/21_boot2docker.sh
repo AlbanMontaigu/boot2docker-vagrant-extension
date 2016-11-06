@@ -130,7 +130,7 @@ b2d_dk_proxyd_help(){
 b2d_dk_ibackup(){
 
     # Using common snippet for that
-    source $BOOT2DOCKER_EXTENSION_LIB_DIR/b2d_dk_ibackup.sh
+    $BOOT2DOCKER_EXTENSION_LIB_DIR/b2d_dk_ibackup.sh $BOOT2DOCKER_DK_IMAGES_SAVE_DIR
 }
 
 # Backup restoration for boot2docker images
@@ -193,7 +193,7 @@ b2d_dk_iremove(){
 b2d_dk_ipull(){
 
     # Using common snippet for that
-    source $BOOT2DOCKER_EXTENSION_LIB_DIR/b2d_dk_ipull.sh
+    $BOOT2DOCKER_EXTENSION_LIB_DIR/b2d_dk_ipull.sh
 }
 
 

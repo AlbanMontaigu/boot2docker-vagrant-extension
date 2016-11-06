@@ -4,11 +4,6 @@
 # Regular docker pull command
 # ===================================================================
 
-# Get ipull param
-export CRON_DK_IPULL_STATUS=$(cat "$BOOT2DOCKER_EXTENSION_PARAM_DIR/CRON_DK_IPULL_STATUS")
-export CRON_DK_IPULL_TIME=$(cat "$BOOT2DOCKER_EXTENSION_PARAM_DIR/CRON_DK_IPULL_TIME")
-export CRON_DK_IPULL_LOGFILE="/var/log/cron_dk_ipull.log"
-
 # Check if the service is enabled
 if [[ "$CRON_DK_IPULL_STATUS" == "ON" ]]; then
     echo "[INFO] Enabling CRON for regular docker pull !"

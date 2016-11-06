@@ -5,14 +5,10 @@
 # ===================================================================
 
 
-# -------------------------------------------------------------------
-# Parametrization (for all environment)
-# -------------------------------------------------------------------
-export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
-export BOOT2DOCKER_EXTENSION_LIB_DIR="$BOOT2DOCKER_EXTENSION_DIR/lib"
-export BOOT2DOCKER_EXTENSION_PARAM_DIR="${BOOT2DOCKER_EXTENSION_DIR}/param.d"
-export BOOT2DOCKER_DK_IMAGES_SAVE_DIR="/vagrant/.vagrant/b2d_dk_images_backup"
-export HOME_DOCKER_USER="/home/docker"
+# ------------------------------------------------------------
+# Environment definition (params and so on)
+# ------------------------------------------------------------
+source /var/lib/boot2docker/extension/environment.sh
 
 
 # -------------------------------------------------------------------

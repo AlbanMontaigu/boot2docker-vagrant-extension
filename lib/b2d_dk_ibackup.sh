@@ -5,6 +5,7 @@
 
 # Configuration and preparation
 set -e
+BOOT2DOCKER_DK_IMAGES_SAVE_DIR="${1}"
 echo "[INFO] Will save all your local b2d docker images to ${BOOT2DOCKER_DK_IMAGES_SAVE_DIR} !"
 echo "[INFO] Cleaning previous backup"
 rm -rvf "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}"
