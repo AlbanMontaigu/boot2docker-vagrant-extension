@@ -9,6 +9,7 @@
 # Parametrization (for all environment)
 # -------------------------------------------------------------------
 export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
+export BOOT2DOCKER_EXTENSION_LIB_DIR="$BOOT2DOCKER_EXTENSION_DIR/lib"
 
 
 # -------------------------------------------------------------------

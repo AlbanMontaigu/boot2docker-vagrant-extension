@@ -14,6 +14,7 @@
 - FEATURE: ```b2d dk iremove [backups]``` command added to remove all your docker images (```dk rmi``` on all ```dk images```) or backups (ibackup)
 - FEATURE: now ```dk_proxyd``` will try to auto detect your proxy context to select the right proxy configuration files (see README.md in the proxy folder)
 - FEATURE: ```b2d_dk_ipull``` command added to update all your images
+- FEATURE: ```BOOT2DOCKER_EXTENSION_LIB_DIR``` added to share code snippets between multiple locations (ash, bootlocal, ...)
 - BUGFIX: updated syncd daemon lunching process to avoid bugs when capturing logs with tee on bootlocal
 
 ## 1.12.2 (2016-10-25)

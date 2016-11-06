@@ -1,4 +1,3 @@
-#@IgnoreInspection BashAddShebang
 
 # ============================================================
 # Boot2docker custom commands
@@ -217,7 +216,6 @@ b2d_dk_iremove(){
 b2d_dk_ipull(){
 
     # Configuration and preparation
-    set -e
     echo "[INFO] Will pull again all your images to take eventual updates !"
     echo "[INFO][$(date +"%T")] Starting pull"
 
@@ -236,7 +234,6 @@ b2d_dk_ipull(){
 
     # Done !
     echo "[INFO][$(date +"%T")] Pull completed !"
-    set +e
 }
 
 
