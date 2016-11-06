@@ -23,6 +23,6 @@ export CRON_DK_IBACKUP_LOGFILE="/var/log/cron_dk_ibackup.log"
 for param_file in $BOOT2DOCKER_EXTENSION_PARAM_DIR/* ; do
     param_name=${param_file##*/}
     if [[ "${param_name}" != "README.md" ]]; then
-        eval "export ${param_name}=$(cat $param_file)"
+        eval "export ${param_name}=\"$(cat $param_file)\""
     fi
 done
