@@ -1,5 +1,5 @@
 
-## 1.12.3 (2016-11-03)
+## 1.12.3 (2016-11-06)
 - UPDATE: update to boot2docker 1.12.3
 - UPDATE: update to my docker-toolbox 1.12.3
 - UPDATE: now sample proxy file is removed since readme gives the right info (avoid unused files)
@@ -13,6 +13,7 @@
 - FEATURE: ```b2d dk irestore``` command added to restore all your images from a local folder
 - FEATURE: ```b2d dk iremove [backups]``` command added to remove all your docker images (```dk rmi``` on all ```dk images```) or backups (ibackup)
 - FEATURE: now ```dk_proxyd``` will try to auto detect your proxy context to select the right proxy configuration files (see README.md in the proxy folder)
+- FEATURE: ```b2d_dk_ipull``` command added to update all your images
 - BUGFIX: updated syncd daemon lunching process to avoid bugs when capturing logs with tee on bootlocal
 
 ## 1.12.2 (2016-10-25)
