@@ -16,6 +16,7 @@
 - FEATURE: ```b2d_dk_ipull``` command added to update all your images
 - FEATURE: ```BOOT2DOCKER_EXTENSION_LIB_DIR``` added to share code snippets between multiple locations (ash, bootlocal, ...)
 - FEATURE: auto docker pull system now available (with cron param)
+- FEATURE: auto docker image backup system now available (with cron param)
 - BUGFIX: updated syncd daemon lunching process to avoid bugs when capturing logs with tee on bootlocal
 
 ## 1.12.2 (2016-10-25)
