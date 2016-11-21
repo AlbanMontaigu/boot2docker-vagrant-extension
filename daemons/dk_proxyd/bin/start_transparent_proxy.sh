@@ -14,7 +14,7 @@ echo "[INFO] Set networking rules ..."
 # Detect proxy on host machine listening on 8888 (typically fiddler on windows) to act as a global proxy gateway
 prx_port_http="3128"
 prx_port_others="12345"
-if [[ "$(echo $http_proxy)" == "http://10.0.2.2:8888" ]]; then
+if [[ "$(echo ${http_proxy})" == "http://10.0.2.2:8888" ]]; then
     prx_port_http="8888"
     prx_port_others="8888"
 fi
