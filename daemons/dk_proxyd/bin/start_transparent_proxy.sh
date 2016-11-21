@@ -21,7 +21,7 @@ if [[ "$(echo ${http_proxy})" == "http://10.0.2.2:8888" ]]; then
     echo "[INFO] Proxy detected on host machine, using it instead of internals..."
 
     # and all other connections to the http-connect port.
-    /usr/local/sbin/iptables -t nat -C TRANSPROXY -p tcp -j DNAT --to-destination 10.0.2.2:8888 2>/dev/null || \
+    /usr/local/sbin/iptables -t nat -C TRANSPROXY -p tcp -j DNAT --to-destination 10.0.2.2:8888 -w 2>/dev/null || \
     /usr/local/sbin/iptables -t nat -A TRANSPROXY -p tcp -j DNAT --to-destination 10.0.2.2:8888 -w
 else
 
