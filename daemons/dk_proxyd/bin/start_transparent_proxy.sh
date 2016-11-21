@@ -15,6 +15,7 @@ echo "[INFO] Set networking rules ..."
 prx_port_http="3128"
 prx_port_others="12345"
 if [[ "$(echo ${http_proxy})" == "http://10.0.2.2:8888" ]]; then
+    echo "[INFO] Proxy detected on host machine, using it instead of internals..."
     prx_port_http="8888"
     prx_port_others="8888"
 fi
@@ -33,6 +34,7 @@ fi
 
 # If proxy listening on host machine don't lunch something else
 if [[ "${prx_port_http}" == "8888" ]]; then
+    echo "[INFO] Transparent proxy not loaded since proxy detected on host machine"
     exit 0
 fi
 
