@@ -11,17 +11,30 @@ docker rm -f transparent-proxy 2>/dev/null || true
 echo "[INFO] Set networking rules ..."
 /usr/local/sbin/iptables -t nat -N TRANSPROXY 2>/dev/null || true
 
+# Detect proxy on host machine listening on 8888 (typically fiddler on windows) to act as a global proxy gateway
+prx_port_http="3128"
+prx_port_others="12345"
+if [[ "$(echo $http_proxy)" == "http://10.0.2.2:8888" ]]; then
+    prx_port_http="8888"
+    prx_port_others="8888"
+fi
+
 # We then told iptables to redirect all port 80 connections to the http-relay port
-/usr/local/sbin/iptables -t nat -C TRANSPROXY -p tcp --dport 80 -j REDIRECT --to-ports 3128 -w 2>/dev/null || \
-/usr/local/sbin/iptables -t nat -A TRANSPROXY -p tcp --dport 80 -j REDIRECT --to-ports 3128 -w
+/usr/local/sbin/iptables -t nat -C TRANSPROXY -p tcp --dport 80 -j REDIRECT --to-ports ${prx_port_http} -w 2>/dev/null || \
+/usr/local/sbin/iptables -t nat -A TRANSPROXY -p tcp --dport 80 -j REDIRECT --to-ports ${prx_port_http} -w
 
 # and all other connections to the http-connect port.
-/usr/local/sbin/iptables -t nat -C TRANSPROXY -p tcp -j REDIRECT --to-ports 12345 -w 2>/dev/null || \
-/usr/local/sbin/iptables -t nat -A TRANSPROXY -p tcp -j REDIRECT --to-ports 12345 -w
+/usr/local/sbin/iptables -t nat -C TRANSPROXY -p tcp -j REDIRECT --to-ports ${prx_port_others} -w 2>/dev/null || \
+/usr/local/sbin/iptables -t nat -A TRANSPROXY -p tcp -j REDIRECT --to-ports ${prx_port_others} -w
 
 # Finally we tell iptables to use the ‘TRANSPROXY’ chain for all outgoing connection in docker containers
 /usr/local/sbin/iptables -t nat -C PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8 2>/dev/null || \
 /usr/local/sbin/iptables -t nat -A PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8
+
+# If proxy listening on host machine don't lunch something else
+if [[ "${prx_port_http}" == "8888" ]]; then
+    exit 0
+fi
 
 # Try to auto detect region profile by checking proxy value
 PROXY_FILE=$(grep -l -m 1 $BOOT2DOCKER_EXTENSION_DIR/proxy/* -e "${http_proxy:-_NA_}" | head -1)

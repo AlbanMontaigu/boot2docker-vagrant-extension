@@ -1,4 +1,7 @@
 
+## 1.12.3 (2016-11-21)
+- FEATURE: now transparent proxy will detect host machine proxy listening on 8888 port to use it instead of internals
+
 ## 1.12.3 (2016-11-06)
 - UPDATE: update to boot2docker 1.12.3
 - UPDATE: update to my docker-toolbox 1.12.3
