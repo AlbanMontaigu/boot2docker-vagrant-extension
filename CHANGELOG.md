@@ -1,4 +1,8 @@
 
+## 1.13.0 (2017-01-29)
+- UPDATE: update to boot2docker 1.13.0
+- UPDATE: update to my docker-toolbox 1.13.0
+
 ## 1.12.5 (2016-12-26)
 - UPDATE: update to boot2docker 1.12.5
 - UPDATE: update to my docker-toolbox 1.12.5
