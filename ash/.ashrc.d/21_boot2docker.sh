@@ -206,6 +206,8 @@ b2d_dk(){
             ;;
         irestore) b2d_dk_irestore
             ;;
+        ipull) b2d_dk_ipull
+            ;;
         iremove) b2d_dk_iremove "$2"
             ;;
         proxyd) b2d_dk_proxyd "$2"
@@ -224,6 +226,7 @@ b2d_dk_custom_usage(){
     echo "    ibackup             Backup all your b2d docker images to a folder in your project"
     echo "    irestore            Restore all your b2d docker images from a folder in your project"
     echo "    iremove [backups]   Remove all your b2d docker images (dk rmi on all dk images) or backups (ibackup)"
+    echo "    ipull               Pull again all your docker images in case of update"
     echo "    proxyd              Start or stop transparent proxy in a container for your containers"
 }
 
