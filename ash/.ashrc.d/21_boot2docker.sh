@@ -5,6 +5,20 @@
 
 
 # ------------------------------------------------------------
+# b2d update commands
+# ------------------------------------------------------------
+
+b2d_update_check_extension(){
+  B2D_EXTENSION_VERSION_LATEST=$(curl -kLs -m3 https://raw.githubusercontent.com/AlbanMontaigu/docker-toolbox/master/VERSION)
+  if [[ "${B2D_EXTENSION_VERSION_LATEST}" != "${B2D_EXTENSION_VERSION}" ]]; then
+      echo "[INFO] OHOHHHH, your b2d extension is NOT in the latest stable version: ${B2D_EXTENSION_VERSION_LATEST}"
+  else
+      echo "[INFO] CONGRATULATIONS your b2d extension is in the latest stable version: ${B2D_EXTENSION_VERSION_LATEST}"
+  fi
+}
+
+
+# ------------------------------------------------------------
 # Fix cache issue in boot2docker with vb guest additions
 # @see https://forums.virtualbox.org/viewtopic.php?f=3&t=33201
 # @see https://www.virtualbox.org/ticket/12597
