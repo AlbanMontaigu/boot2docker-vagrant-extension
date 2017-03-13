@@ -32,5 +32,8 @@ version_check(){
     fi
 }
 
-# Do the check but not blocking
-version_check&
+# Do the check but not blocking and only once
+if [ -z "${B2D_VERSION_CHECK}" ]; then
+    version_check&
+    export B2D_VERSION_CHECK=1
+fi
