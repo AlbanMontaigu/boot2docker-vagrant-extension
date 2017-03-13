@@ -2,6 +2,7 @@
 ## 17.03.0-ce (2017-03-13)
 - UPDATE: update to boot2docker 17.03.0-ce
 - UPDATE: update to my docker-toolbox 17.03.0-ce
+- FEATURE: b2d extension version update notification added
 
 ## 1.13.1 (2017-02-23)
 - FEATURE:  ```b2d dk ipull``` command available
