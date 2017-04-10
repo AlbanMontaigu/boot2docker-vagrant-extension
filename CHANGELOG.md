@@ -1,15 +1,15 @@
 
-## 17.04.0-ce (2017-04-07)
-- UPDATE: update to boot2docker 17.04.0-ce
-- UPDATE: update to my docker-toolbox 17.04.0-ce
+## 17.04.0ce (2017-04-07)
+- UPDATE: update to boot2docker 17.04.0ce
+- UPDATE: update to my docker-toolbox 17.04.0ce
 
-## 17.03.1-ce (2017-04-07)
-- UPDATE: update to boot2docker 17.03.1-ce
-- UPDATE: update to my docker-toolbox 17.03.1-ce
+## 17.03.1ce (2017-04-07)
+- UPDATE: update to boot2docker 17.03.1ce
+- UPDATE: update to my docker-toolbox 17.03.1ce
 
-## 17.03.0-ce (2017-03-13)
-- UPDATE: update to boot2docker 17.03.0-ce
-- UPDATE: update to my docker-toolbox 17.03.0-ce
+## 17.03.0ce (2017-03-13)
+- UPDATE: update to boot2docker 17.03.0ce
+- UPDATE: update to my docker-toolbox 17.03.0ce
 - FEATURE: b2d extension version update notification added
 
 ## 1.13.1 (2017-02-23)
