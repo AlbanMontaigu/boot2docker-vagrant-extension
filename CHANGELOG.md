@@ -1,7 +1,7 @@
 
 ## 17.04.0-ce (2017-04-10)
-- UPDATE: update to boot2docker 17.04.0ce
-- UPDATE: update to my docker-toolbox 17.04.0ce
+- UPDATE: update to boot2docker 17.04.0-ce
+- UPDATE: update to my docker-toolbox 17.04.0-ce
 - UPDATE: try to go back to docker standard version name
 
 ## 17.03.1ce (2017-04-07)
