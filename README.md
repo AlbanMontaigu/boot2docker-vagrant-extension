@@ -42,7 +42,7 @@ Here you have all custom commands loaded in your environment by this extension.
 
 ### Deamons
 
-Provide some custom services that run in backgroud to ease the life in the boot2docker world. See inside the folder to know available daemons.
+Provide some custom services that run in background to ease the life in the boot2docker world. See inside the folder to know available daemons.
 
 ### bootlocal.sh.d
 
