@@ -1,4 +1,7 @@
 
+## 17.XX.X-ce (2017-08-09)
+- UPDATE: version check sleep moved from 5 sec to 3 sec to avoid so much wait
+
 ## 17.06.0-ce (2017-07-05)
 - UPDATE: update to boot2docker 17.06.0-ce
 - UPDATE: update to my docker-toolbox 17.06.0-ce
