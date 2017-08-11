@@ -34,15 +34,15 @@ CUSTOM_PROXY_PAC_URL_FILE="${CUSTOM_PROXY_PAC}.url"
 if [ -f "${CUSTOM_PROXY_PAC}" ]; then
     # run transparent with custom config
     echo "[INFO] Use your ${CUSTOM_PROXY_PAC}"
-    docker run --name=transparent-proxy --net=host -v $CUSTOM_PROXY_PAC:/mnt/proxy.pac -d registry-testing.kazan.atosworldline.com/docker-reg/awl-transparent-proxy file:///mnt/proxy.pac
+    docker run --name=transparent-proxy --net=host -v $CUSTOM_PROXY_PAC:/mnt/proxy.pac -d amontaigu/transparent-proxy:latest file:///mnt/proxy.pac
 elif [ -f "${CUSTOM_PROXY_PAC_URL}" ]; then
     echo "[INFO] Use your ${CUSTOM_PROXY_PAC_URL_FILE}"
     CUSTOM_PROXY_PAC_URL="$(cat $CUSTOM_PROXY_PAC_URL_FILE)"
-    docker run --name=transparent-proxy --net=host -d registry.kazan.atosworldline.com/docker-reg/awl-transparent-proxy "${CUSTOM_PROXY_PAC_URL}"
+    docker run --name=transparent-proxy --net=host -d amontaigu/transparent-proxy:latest "${CUSTOM_PROXY_PAC_URL}"
 else
     # run transparent proxy using wpad
     echo "[INFO] Use proxy set in default auto detected proxy pac"
-    docker run --name=transparent-proxy --net=host -d registry.kazan.atosworldline.com/docker-reg/awl-transparent-proxy http://wpad/wpad.dat
+    docker run --name=transparent-proxy --net=host -d amontaigu/transparent-proxy:latest http://wpad/wpad.dat
 fi
 echo "[INFO] OK, transparent proxy is started"
 
