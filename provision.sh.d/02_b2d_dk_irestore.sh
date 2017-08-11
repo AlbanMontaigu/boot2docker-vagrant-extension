@@ -1,27 +1,7 @@
 
 # ===================================================================
 # Autoload b2d backups if any
-#
-# Note: okay its a copy past from .ashrc.d/21_boot2docker.sh but
-#       this is not loaded at provisioning time so... Need to find
-#       a way to improve this later.
 # ===================================================================
 
-# General information
-echo "[INFO] Will restore all your b2d docker images from ${BOOT2DOCKER_DK_IMAGES_SAVE_DIR} !"
-
-# Check if backup dir is present
-if [ -d "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}" ]; then
-    echo "[INFO][$(date +"%T")] Starting restore"
-
-    # For each saved image
-    for b2d_dk_image_saved in $BOOT2DOCKER_DK_IMAGES_SAVE_DIR/*.tgz ; do
-        echo "[INFO][$(date +"%T")] Now restoring ${b2d_dk_image_saved}"
-        gunzip -c "${b2d_dk_image_saved}" | docker load
-    done
-
-    # Done !
-    echo "[INFO][$(date +"%T")] Restore completed completed !"
-else
-    echo "[INFO] No backup to restore !"
-fi
+# Using common snippet for that
+$BOOT2DOCKER_EXTENSION_LIB_DIR/b2d_dk_irestore.sh $BOOT2DOCKER_DK_IMAGES_SAVE_DIR
