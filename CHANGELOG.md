@@ -1,9 +1,10 @@
 
 ## 17.XX.X-ce (2017-08-09)
 - UPDATE: version check sleep moved from 5 sec to 3 sec to avoid so much wait
-- UPDATE: moving docker image backup to folder /vagrant/.vagrant/b2d_common/dk_images_backup for common share between various VM with last version of b2d vagrant box
-- UPDATE: b2d dk irestore code moved to common lib
+- UPDATE: moving docker image backup to folder ```/vagrant/.vagrant/b2d_common/dk_images_backup``` for common share between various VM with last version of b2d vagrant box
+- UPDATE: ```b2d dk irestore``` code moved to common lib
 - BUGFIX: now use the right image for transparent proxy
+- FEATURE: now ```b2d dk irestore``` (and related auto restore) will use ```boot2docker/dk_images_backup.txt``` to know which images to restore
 
 ## 17.06.0-ce (2017-07-05)
 - UPDATE: update to boot2docker 17.06.0-ce
