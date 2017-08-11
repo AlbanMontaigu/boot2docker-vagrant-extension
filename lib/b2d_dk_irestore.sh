@@ -24,10 +24,10 @@ if [ -d "${B2D_DK_IMAGES_SAVE_DIR}" ] && [ -f "${B2D_DK_IMAGES_BACKUP_DEFINITION
 
     # Starting restore
     echo "[INFO][$(date +"%T")] Starting docker images restore..."
-    while read -r image_to_restore || [[ -n "${image_to_restore}" ]]; do
+    cat "${B2D_DK_IMAGES_BACKUP_DEFINITION}" "${B2D_DK_IMAGES_BACKUP_USER_DEFINITION}" 2>/dev/null | while read -r image_to_restore || [[ -n "${image_to_restore}" ]]; do
         echo "[INFO][$(date +"%T")] Searching images matching with: ${image_to_restore}..."
-        find "${B2D_DK_IMAGES_SAVE_DIR}" -name "${image_to_restore}" -exec sh -c "echo '[INFO][$(date +"%T")] Now restoring {}' && gunzip -c {} | docker load" \;
-    done < cat "${B2D_DK_IMAGES_BACKUP_DEFINITION}" "${B2D_DK_IMAGES_BACKUP_USER_DEFINITION}" 2>/dev/null
+        find "${B2D_DK_IMAGES_SAVE_DIR}" -regex "${image_to_restore}" -exec sh -c "echo '[INFO][$(date +"%T")] Now restoring {}' && gunzip -c {} | docker load" \;
+    done
 
     # Done !
     echo "[INFO][$(date +"%T")] Docker images restore completed !"
