@@ -3,6 +3,7 @@
 - UPDATE: version check sleep moved from 5 sec to 3 sec to avoid so much wait
 - UPDATE: moving docker image backup to folder /vagrant/.vagrant/b2d_common/dk_images_backup for common share between various VM with last version of b2d vagrant box
 - UPDATE: b2d dk irestore code moved to common lib
+- BUGFIX: now use the right image for transparent proxy
 
 ## 17.06.0-ce (2017-07-05)
 - UPDATE: update to boot2docker 17.06.0-ce
