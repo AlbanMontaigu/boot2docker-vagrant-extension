@@ -5,6 +5,7 @@
 - UPDATE: ```b2d dk irestore``` code moved to common lib
 - BUGFIX: now use the right image for transparent proxy
 - FEATURE: now ```b2d dk irestore``` (and related auto restore) will use ```boot2docker/dk_images_backup.txt``` to know which images to restore
+- FEATURE: now user ```proxy.pac``` can be set in ```boot2docker/proxy``` folder and not only in boot2docker extension
 
 ## 17.06.0-ce (2017-07-05)
 - UPDATE: update to boot2docker 17.06.0-ce

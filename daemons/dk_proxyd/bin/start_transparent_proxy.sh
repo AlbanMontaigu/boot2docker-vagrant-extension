@@ -29,9 +29,19 @@ PROXY_PREFIX=$(echo -n "${PROXY_FILE}" | cut -d '_' -f1)
 
 # Now starting transparent proxy service in a container
 echo "[INFO] Launching transparent proxy service ..."
+
+# In order of priority, specific conf may come either from user proxy pac in project, proxy pac in
+# b2d extension or specific URL
+USER_PROXY_PAC="/vagrant/boot2docker/proxy/${PROXY_PREFIX}_proxy.pac"
 CUSTOM_PROXY_PAC="${BOOT2DOCKER_EXTENSION_DIR}/proxy/${PROXY_PREFIX}_proxy.pac"
 CUSTOM_PROXY_PAC_URL_FILE="${CUSTOM_PROXY_PAC}.url"
-if [ -f "${CUSTOM_PROXY_PAC}" ]; then
+
+# Testing cases
+if [ -f "${USER_PROXY_PAC}" ]; then
+    # run transparent with user config
+    echo "[INFO] Use your ${USER_PROXY_PAC}"
+    docker run --name=transparent-proxy --net=host -v $USER_PROXY_PAC:/mnt/proxy.pac -d amontaigu/transparent-proxy:latest file:///mnt/proxy.pac
+elif [ -f "${CUSTOM_PROXY_PAC}" ]; then
     # run transparent with custom config
     echo "[INFO] Use your ${CUSTOM_PROXY_PAC}"
     docker run --name=transparent-proxy --net=host -v $CUSTOM_PROXY_PAC:/mnt/proxy.pac -d amontaigu/transparent-proxy:latest file:///mnt/proxy.pac
