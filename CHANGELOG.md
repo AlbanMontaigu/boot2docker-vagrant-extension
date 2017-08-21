@@ -1,5 +1,7 @@
 
 ## 17.06.1-ce (2017-08-21)
+- UPDATE: update to boot2docker 17.06.1-ce
+- UPDATE: update to my docker-toolbox 17.06.1-ce
 - UPDATE: version check sleep moved from 5 sec to 2 sec to avoid so much wait
 - UPDATE: moving docker image backup to folder ```/vagrant/.vagrant/b2d_common/dk_images_backup``` for common share between various VM with last version of b2d vagrant box
 - UPDATE: ```b2d dk irestore``` code moved to common lib
