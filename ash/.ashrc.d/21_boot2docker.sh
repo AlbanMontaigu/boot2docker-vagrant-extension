@@ -156,34 +156,6 @@ b2d_dk_irestore(){
 
 
 # ------------------------------------------------------------
-# Docker all images remove
-# ------------------------------------------------------------
-
-b2d_dk_iremove(){
-
-    # Remove backups only
-    if [[ "${1}" == "backups" ]]; then
-        echo "[INFO][$(date +"%T")] Removing images backups !"
-        rm -rvf "${BOOT2DOCKER_DK_IMAGES_SAVE_DIR}"
-         echo "[INFO][$(date +"%T")] Images backup remove completed !"
-        return 0
-    fi
-
-    # Done !
-    echo "[INFO][$(date +"%T")] Will remove all your images !"
-
-    # Iterate each docker image
-    for b2d_dk_image in $(docker images --format "{{.Repository}}:{{.Tag}}") ; do
-        echo "[INFO][$(date +"%T")] Now removing ${b2d_dk_image}"
-        docker rmi "${b2d_dk_image}"
-    done
-
-    # Done !
-    echo "[INFO][$(date +"%T")] Images remove completed !"
-}
-
-
-# ------------------------------------------------------------
 # Docker images re pull
 # ------------------------------------------------------------
 b2d_dk_ipull(){
@@ -204,8 +176,6 @@ b2d_dk(){
             ;;
         ipull) b2d_dk_ipull
             ;;
-        iremove) b2d_dk_iremove "$2"
-            ;;
         proxyd) b2d_dk_proxyd "$2"
             ;;
         *) b2d_dk_custom_usage
@@ -221,7 +191,6 @@ b2d_dk_custom_usage(){
     echo "b2d dk commands:"
     echo "    ibackup             Backup all your b2d docker images to a folder in your project"
     echo "    irestore            Restore all your b2d docker images from a folder in your project"
-    echo "    iremove [backups]   Remove all your b2d docker images (dk rmi on all dk images) or backups (ibackup)"
     echo "    ipull               Pull again all your docker images in case of update"
     echo "    proxyd              Start or stop transparent proxy in a container for your containers"
 }

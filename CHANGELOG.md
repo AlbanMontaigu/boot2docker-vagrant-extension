@@ -3,6 +3,7 @@
 - UPDATE: version check sleep moved from 5 sec to 3 sec to avoid so much wait
 - UPDATE: moving docker image backup to folder ```/vagrant/.vagrant/b2d_common/dk_images_backup``` for common share between various VM with last version of b2d vagrant box
 - UPDATE: ```b2d dk irestore``` code moved to common lib
+- UPDATE: ```b2d dk iremove``` removed, please use ```docker image prune``` instead
 - BUGFIX: now use the right image for transparent proxy
 - FEATURE: now ```b2d dk irestore``` (and related auto restore) will use ```boot2docker/dk_images_backup.txt``` to know which images to restore
 - FEATURE: now user ```proxy.pac``` can be set in ```boot2docker/proxy``` folder and not only in boot2docker extension
