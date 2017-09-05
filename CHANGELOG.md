@@ -1,4 +1,8 @@
 
+## 17.07.0-ce (2017-09-05)
+- UPDATE: update to boot2docker 17.07.0-ce
+- UPDATE: update to my docker-toolbox 17.07.0-ce
+
 ## 17.06.1-ce (2017-08-21)
 - UPDATE: update to boot2docker 17.06.1-ce
 - UPDATE: update to my docker-toolbox 17.06.1-ce
