@@ -4,8 +4,10 @@
 # B2D docker transparent proxy daemon
 # ============================================================
 
-# Configuration
-BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
+# Configuration to be available for start /stop bin called
+export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
+
+# Local configuration
 DAEMON_DIR="${BOOT2DOCKER_EXTENSION_DIR}/daemons/dk_proxyd"
 DAEMON_START_BIN="$DAEMON_DIR/bin/start_transparent_proxy.sh"
 DAEMON_STOP_BIN="$DAEMON_DIR/bin/stop_transparent_proxy.sh"
