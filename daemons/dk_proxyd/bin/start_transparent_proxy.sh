@@ -23,6 +23,11 @@ echo "[INFO] Set networking rules ..."
 /usr/local/sbin/iptables -t nat -C PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8 2>/dev/null || \
 /usr/local/sbin/iptables -t nat -A PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8
 
+# Be sure we have something in http_proxy so load env if nothing else available
+if [[ "${http_proxy}" == "_NA_" ]]; then
+    source /etc/environment
+fi
+
 # Try to auto detect region profile by checking proxy value
 PROXY_FILE=$(grep -l -m 1 $BOOT2DOCKER_EXTENSION_DIR/proxy/* -e "${http_proxy:-_NA_}" | head -1)
 PROXY_PREFIX=$(basename "${PROXY_FILE}" | cut -d '_' -f1)

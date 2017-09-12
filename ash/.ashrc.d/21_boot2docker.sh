@@ -124,7 +124,8 @@ b2d_proxy_help(){
 
 # dk_proxyd daemon wrapper in a b2d subcommand
 b2d_dk_proxyd(){
-    sudo $BOOT2DOCKER_EXTENSION_DIR/daemons/dk_proxyd/init.d/dk_proxyd.sh "$1"
+    # Pass http_proxy in sudo env to let auto detection stuff based on it working
+    sudo http_proxy="${http_proxy}" $BOOT2DOCKER_EXTENSION_DIR/daemons/dk_proxyd/init.d/dk_proxyd.sh "$1"
 }
 
 # dk proxyd command help

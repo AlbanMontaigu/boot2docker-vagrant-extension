@@ -6,6 +6,8 @@
 
 # Configuration to be available for start /stop bin called
 export BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
+# Make http_proxy var available (if any) for binary called
+export http_proxy="${http_proxy:-_NA_}"
 
 # Local configuration
 DAEMON_DIR="${BOOT2DOCKER_EXTENSION_DIR}/daemons/dk_proxyd"
