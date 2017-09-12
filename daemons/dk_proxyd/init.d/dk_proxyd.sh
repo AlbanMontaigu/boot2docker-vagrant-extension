@@ -5,7 +5,8 @@
 # ============================================================
 
 # Configuration
-DAEMON_DIR="/var/lib/boot2docker/extension/daemons/dk_proxyd"
+BOOT2DOCKER_EXTENSION_DIR="/var/lib/boot2docker/extension"
+DAEMON_DIR="${BOOT2DOCKER_EXTENSION_DIR}/daemons/dk_proxyd"
 DAEMON_START_BIN="$DAEMON_DIR/bin/start_transparent_proxy.sh"
 DAEMON_STOP_BIN="$DAEMON_DIR/bin/stop_transparent_proxy.sh"
 DAEMON_USER="root"
