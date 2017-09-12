@@ -1,4 +1,7 @@
 
+## 17.06.2-ce (2017-09-12)
+- BUGFIX: auto detection of user proxy pac fixed
+
 ## 17.06.2-ce (2017-09-06)
 - UPDATE: update to boot2docker 17.06.2-ce
 - UPDATE: update to my docker-toolbox 17.06.2-ce

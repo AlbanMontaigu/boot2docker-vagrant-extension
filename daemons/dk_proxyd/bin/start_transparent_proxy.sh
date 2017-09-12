@@ -25,7 +25,7 @@ echo "[INFO] Set networking rules ..."
 
 # Try to auto detect region profile by checking proxy value
 PROXY_FILE=$(grep -l -m 1 $BOOT2DOCKER_EXTENSION_DIR/proxy/* -e "${http_proxy:-_NA_}" | head -1)
-PROXY_PREFIX=$(echo -n "${PROXY_FILE}" | cut -d '_' -f1)
+PROXY_PREFIX=$(basename "${PROXY_FILE}" | cut -d '_' -f1)
 
 # Now starting transparent proxy service in a container
 echo "[INFO] Launching transparent proxy service ..."
