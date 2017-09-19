@@ -18,7 +18,7 @@ fi
 # -------------------------------------------------------------------
 # Solves insecure registry (example)
 # -------------------------------------------------------------------
-#if grep -q my.inscure.registry.url /var/lib/boot2docker/profile; then
+#if grep -q my.insecure.registry.url /var/lib/boot2docker/profile; then
 #    echo "[INFO] Nothing todo in boot2docker/profile !"
 #else
 #    echo 'EXTRA_ARGS="--insecure-registry my.insecure.registry.url"' >> /var/lib/boot2docker/profile
