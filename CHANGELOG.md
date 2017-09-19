@@ -1,4 +1,7 @@
 
+## 17.06.2-ce (2017-09-19)
+- UPDATE: now `DOCKER_TLS=no` is set by default for dockerd to avoid communication issue with windows local host with no TLS configured 
+
 ## 17.06.2-ce (2017-09-12)
 - BUGFIX: auto detection of user proxy pac fixed
 - BUGFIX: BOOT2DOCKER_EXTENSION_DIR env var not available for proxyd fixed (because sudo)

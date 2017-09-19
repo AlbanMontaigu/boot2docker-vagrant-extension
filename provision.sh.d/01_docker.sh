@@ -3,6 +3,17 @@
 # Docker custom configuration
 # ===================================================================
 
+# -------------------------------------------------------------------
+# No TLS mode by default since it may cause issue for communications
+# between windows and boot2docker with docker client on windows
+# without additional configuration for TLS.
+# -------------------------------------------------------------------
+if grep -q DOCKER_TLS /var/lib/boot2docker/profile; then
+    echo "[INFO] Nothing todo in boot2docker/profile !"
+else
+    echo 'export DOCKER_TLS=no' >> /var/lib/boot2docker/profile
+    echo "[INFO] Boot2docker/profile updated with DOCKER_TLS=no !"
+fi
 
 # -------------------------------------------------------------------
 # Solves insecure registry (example)
