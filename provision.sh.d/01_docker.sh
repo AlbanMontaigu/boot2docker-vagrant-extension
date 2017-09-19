@@ -9,7 +9,7 @@
 # without additional configuration for TLS.
 # -------------------------------------------------------------------
 if grep -q DOCKER_TLS /var/lib/boot2docker/profile; then
-    echo "[INFO] Nothing todo in boot2docker/profile !"
+    echo "[INFO] Nothing todo in boot2docker/profile for DOCKER_TLS !"
 else
     echo 'export DOCKER_TLS=no' >> /var/lib/boot2docker/profile
     echo "[INFO] Boot2docker/profile updated with DOCKER_TLS=no !"
