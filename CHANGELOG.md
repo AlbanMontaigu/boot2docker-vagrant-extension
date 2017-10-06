@@ -1,4 +1,8 @@
 
+## 17.09.0-ce (2017-10-06)
+- UPDATE: update to boot2docker 17.09.0-ce
+- UPDATE: update to my docker-toolbox 17.09.0-ce
+
 ## 17.06.2-ce (2017-09-19)
 - UPDATE: now `DOCKER_TLS=no` is set by default for dockerd to avoid communication issue with windows local host with no TLS configured 
 
