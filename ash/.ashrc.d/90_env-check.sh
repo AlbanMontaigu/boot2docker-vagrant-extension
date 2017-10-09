@@ -11,9 +11,6 @@
 # ------------------------------------------------------------
 version_check(){
 
-    # Need to wait to be sure that user see that on the shell
-    sleep 2
-
     # Get remote version (latest)
     B2D_EXT_LATEST_VERSION=$(curl -m15 -skL https://raw.githubusercontent.com/AlbanMontaigu/boot2docker-vagrant-extension/latest/VERSION)
 
@@ -34,6 +31,6 @@ version_check(){
 
 # Do the check but not blocking and only once
 if [ -z "${B2D_VERSION_CHECK}" ]; then
-    version_check&
+    version_check
     export B2D_VERSION_CHECK=1
 fi
