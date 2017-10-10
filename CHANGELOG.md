@@ -1,4 +1,7 @@
 
+## 17.09.0-ce (2017-10-10)
+- FEATURE: now scripts called in vagrant file are stored here in `vagrant` folder for remote call
+
 ## 17.09.0-ce (2017-10-09)
 - UPDATE: now `version_check` won't not occur in background anymore (avoid keypress need)
 
