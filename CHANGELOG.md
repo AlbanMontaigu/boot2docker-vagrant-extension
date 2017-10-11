@@ -3,6 +3,7 @@
 - FEATURE: now scripts called in vagrant file are stored here in `vagrant` folder for remote call
 - FEATURE: now `param.sh` can take a third optional argument `--append` to append new param a the end of the file
 - FEATURE: `param-ibackup.sh` is available as `param.sh` wrapper for `B2D_DK_IMAGES_BACKUP` easier management
+- FEATURE: cut provisioning in 2 steps to allow custom param to be taken in account in provisioning-end run at last
 
 ## 17.09.0-ce (2017-10-09)
 - UPDATE: now `version_check` won't not occur in background anymore (avoid keypress need)
