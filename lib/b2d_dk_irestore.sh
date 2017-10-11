@@ -10,21 +10,16 @@ set -e
 #       this
 B2D_DK_IMAGES_SAVE_DIR="${1}"
 B2D_DK_IMAGES_BACKUP_DEFINITION="/var/lib/boot2docker/extension/param.d/B2D_DK_IMAGES_BACKUP"
-B2D_DK_IMAGES_BACKUP_USER_DEFINITION="/vagrant/boot2docker/dk_images_backup.txt"
 
 # Start message
-echo "[INFO] Will restore all your b2d docker images from ${B2D_DK_IMAGES_SAVE_DIR} according to your boot2docker/dk_images_backup.txt !"
+echo "[INFO] Will restore all your specified b2d docker images from ${B2D_DK_IMAGES_SAVE_DIR}"
 
 # Check if backup dir and config file exist
-#
-# Note: BACKUP_USER_DEFINITION is optional and will be concatenated if any with BACKUP_DEFINITION file.
-#       Cat will produce an error if optional file not present but it's redirected to /dev/null
-#       to avoid perturbations in the process. A quick and simple way to avoid tons of tests.
 if [ -d "${B2D_DK_IMAGES_SAVE_DIR}" ] && [ -f "${B2D_DK_IMAGES_BACKUP_DEFINITION}" ] ; then
 
     # Starting restore
     echo "[INFO][$(date +"%T")] Starting docker images restore..."
-    cat "${B2D_DK_IMAGES_BACKUP_DEFINITION}" "${B2D_DK_IMAGES_BACKUP_USER_DEFINITION}" 2>/dev/null | while read -r image_to_restore || [[ -n "${image_to_restore}" ]]; do
+    cat "${B2D_DK_IMAGES_BACKUP_DEFINITION}" | while read -r image_to_restore || [[ -n "${image_to_restore}" ]]; do
         echo "[INFO][$(date +"%T")] Searching images matching with: ${image_to_restore}..."
         find "${B2D_DK_IMAGES_SAVE_DIR}" -regex "${image_to_restore}" -exec sh -c "echo '[INFO][$(date +"%T")] Now restoring {}' && gunzip -c {} | docker load" \;
     done
