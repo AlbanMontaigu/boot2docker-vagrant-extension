@@ -1,4 +1,7 @@
 
+## 17.09.0-ce (2017-10-13)
+- UPDATE: `.*terraform_0.10.7.*`, `.*rancher_cli_v0.6.4.*`, `.*ansible_2.4.0.0.*` backup added
+
 ## 17.09.0-ce (2017-10-11)
 - FEATURE: now scripts called in vagrant file are stored here in `vagrant` folder for remote call
 - FEATURE: now `param.sh` can take a third optional argument `--append` to append new param a the end of the file
