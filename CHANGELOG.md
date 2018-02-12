@@ -1,7 +1,7 @@
 
 ## 17.12.0-ce (2018-02-12)
-- UPDATE: update to boot2docker 17.09.0-ce
-- UPDATE: update to my docker-toolbox 17.09.0-ce
+- UPDATE: update to boot2docker 17.12.0-ce
+- UPDATE: update to my docker-toolbox 17.12.0-ce
 - UPDATE: default backup of ansible 2.4.3.0 & rancher cli v0.6.7 images
 
 ## 17.09.0-ce (2017-10-13)
