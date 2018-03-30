@@ -16,7 +16,7 @@ fi
 # - Set http_proxy but leave it blank to let the proxyd try  to auto detect your environment
 
 # Stop the proxy start if no http_proxy env var set
-if [[ -n $http_proxy ]]; then
+if [ -z "${http_proxy+x}" ]; then
     echo "[WARN] No http_proxy env var detected, skipping the transparent proxy start"
     exit 0
 fi
