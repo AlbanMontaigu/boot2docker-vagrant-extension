@@ -1,5 +1,5 @@
 .*transparent-proxy_latest.*
 .*docker-toolbox_18.03.0-ce.*
-.*terraform_0.11.3.*
-.*rancher_cli_v0.6.7.*
-.*ansible_2.4.3.0.*
+.*terraform_0.11.5.*
+.*rancher_cli_v0.6.8.*
+.*ansible_2.5.0.*
