@@ -3,6 +3,24 @@
 # Error handling
 set -e
 
+# Be sure we have something in http_proxy so load env if nothing else available
+if [[ "${http_proxy}" == "_NA_" ]]; then
+    source /etc/environment
+fi
+
+# ----------------------------------------
+# /!\ Careful on proxy behaviour
+# -----------------------------------------
+# At this stage even if you choose to enable proxy in your vagrant file, you:
+# - MUST HAVE somehow http_proxy environment variable set
+# - Set http_proxy but leave it blank to let the proxyd try  to auto detect your environment
+
+# Stop the proxy start if no http_proxy env var set
+if [[ -n $http_proxy ]]; then
+    echo "[WARN] No http_proxy env var detected, skipping the transparent proxy start"
+    exit 0
+fi
+
 # Stop and delete existing container
 echo "[INFO] Deleting existing transparent proxy container and network rules ..."
 docker rm -f transparent-proxy 2>/dev/null || true
@@ -22,11 +40,6 @@ echo "[INFO] Set networking rules ..."
 # Finally we tell iptables to use the ‘TRANSPROXY’ chain for all outgoing connection in docker containers
 /usr/local/sbin/iptables -t nat -C PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8 2>/dev/null || \
 /usr/local/sbin/iptables -t nat -A PREROUTING -p tcp -j TRANSPROXY -m addrtype --dst-type UNICAST ! --dst 172.0.0.0/8
-
-# Be sure we have something in http_proxy so load env if nothing else available
-if [[ "${http_proxy}" == "_NA_" ]]; then
-    source /etc/environment
-fi
 
 # Try to auto detect region profile by checking proxy value
 PROXY_FILE=$(grep -l -m 1 $BOOT2DOCKER_EXTENSION_DIR/proxy/* -e "${http_proxy:-_NA_}" | head -1)
