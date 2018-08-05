@@ -1,4 +1,7 @@
 
+## 18.06.0-ce (2018-08-05)
+- UPDATE: bump to docker 18.06.0-ce
+
 ## 18.03.1-ce (2018-05-01)
 - UPDATE: bump to docker 18.03.1-ce
 - UPDATE: default backup of terraform 0.11.7, ansible 2.5.2 & rancher cli v2.0.0 images
